@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leerkompas Palliatieve Zorg | TPZ Midden-Nederland (versie 16-10-2026)</title>
+<title>Leerkompas Palliatieve Zorg | TPZ Midden-Nederland (versie 19-10-2026)</title>
 <style>
 :root{
   --dk:#46571b; --dk2:#374515; --lk:#93ab67; --lk2:#b5cc8e;
@@ -201,6 +201,8 @@ a.cite:hover{background:var(--grijs2)}
 .werkvorm-item.is-new,.schol-item.is-new,.org-item.is-new{border-left:4px solid var(--geel);background:#fffdf3}
 .werkvorm-item.check-link.is-new{background:#fff4e0}
 .vl-badge{display:inline-block;background:#fff4e0;border:1px solid #e8a33d;color:#8a5a10;font-size:9.5px;font-weight:800;border-radius:10px;padding:1px 8px;margin-left:6px;vertical-align:1px;text-transform:uppercase;letter-spacing:.4px}
+.bb-lijst{margin:4px 0 2px 18px;padding:0}
+.bb-lijst li{margin-bottom:2px}
 .vl-banner{background:#fff4e0;border:1px dashed #e8a33d;border-radius:var(--rs);padding:9px 12px;font-size:11.5px;color:#6b470c;margin:2px 0 6px;line-height:1.55}
 .vl-tekst{font-size:12.5px;color:var(--txt);line-height:1.65;border-left:3px dashed #e8a33d;padding-left:12px}
 .info-pop-vl{font-size:10.5px;color:#8a5a10;font-weight:700;margin-top:5px}
@@ -441,6 +443,8 @@ a.cite:hover{background:var(--grijs2)}
 .toepas-ic{display:none!important}
 .kad-kop{font-size:14px;color:var(--dk);margin:22px 0 4px}
 .kad-lijst{border-top:2px solid var(--dk);max-width:860px}
+.kad-rij-tekst:hover .kad-t{text-decoration:none}
+.kad-rij-tekst .kad-d a{color:var(--dk);font-weight:700}
 .kad-rij{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:4px 24px;padding:13px 4px;border-bottom:1px solid var(--grijs);text-decoration:none;color:inherit}
 .kad-rij:hover .kad-t{text-decoration:underline;text-underline-offset:3px}
 .kad-t{font-size:13.5px;font-weight:700;color:var(--dk);line-height:1.35}
@@ -504,11 +508,18 @@ a.cite:hover{background:var(--grijs2)}
 }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} html{scroll-behavior:auto} }
 
-/* CONCEPT-markering en zoeken in de groene balk */
+/* acht aanbevelingen patiëntverkenning */
+.aanb-grid{list-style:none;margin:10px 0 12px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.aanb-grid li{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--grijs);border-left:4px solid var(--lk);border-radius:var(--rs);padding:9px 12px;font-size:12.5px;line-height:1.45;color:var(--txt)}
+.aanb-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--dk);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+.aanb-grid li.aanb-dkb{border-left-color:var(--geeld);background:#fbf8e6}
+.aanb-tag{display:block;margin-top:3px;font-size:10px;font-weight:800;color:#7a6c14;text-transform:uppercase;letter-spacing:.04em}
+@media (max-width:640px){ .aanb-grid{grid-template-columns:1fr} }
+
+/* zoeken in de groene balk */
 .hdr{flex-wrap:wrap;z-index:60}
 .hdr .hdr-versie{margin-left:0}
-.hdr-concept{margin:0 auto;font-size:34px;font-weight:900;letter-spacing:.14em;color:#ffd83d;line-height:1;text-shadow:0 2px 8px rgba(0,0,0,.35);user-select:none}
-.hdr-zoek{position:relative;width:270px;flex-shrink:0}
+.hdr-zoek{position:relative;width:270px;flex-shrink:0;margin-left:auto}
 .hdr-zoek input{width:100%;font-family:inherit;font-size:13px;color:var(--txt);background:#fff;border:2px solid transparent;border-radius:20px;padding:7px 14px 7px 32px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .hdr-zoek input:focus{outline:none;border-color:#ffd83d}
 .hdr-zoek::before{content:'';position:absolute;left:12px;top:50%;width:9px;height:9px;margin-top:-7px;border:2px solid var(--txt2);border-radius:50%;pointer-events:none}
@@ -521,8 +532,8 @@ a.cite:hover{background:var(--grijs2)}
 .zk-item mark,.zk-leeg mark{background:#fbeea0;color:inherit;border-radius:2px;padding:0 1px}
 .zk-leeg{font-size:12.5px;color:var(--txt2);padding:10px 14px}
 .zk-mark{outline:3px solid #ffd83d;outline-offset:3px;border-radius:4px;background:#fffbe3;transition:background .6s}
-@media (max-width:900px){ .hdr{row-gap:10px} .hdr > div:not(.hdr-zoek){flex:1 1 0} .hdr-concept{font-size:26px;margin-right:0} .hdr-zoek{order:5;width:100%} .zk-res{left:0;right:0;width:auto} }
-@media (max-width:640px){ .hdr{gap:10px} .hdr-concept{font-size:18px;letter-spacing:.06em} .hdr-logo{width:42px;height:42px} .hdr .hdr-logo img{height:35px} }
+@media (max-width:900px){ .hdr{row-gap:10px} .hdr > div:not(.hdr-zoek){flex:1 1 0} .hdr-zoek{order:5;width:100%;margin-left:0} .zk-res{left:0;right:0;width:auto} }
+@media (max-width:640px){ .hdr{gap:10px} .hdr-logo{width:42px;height:42px} .hdr .hdr-logo img{height:35px} }
 
 </style>
 </head>
@@ -550,7 +561,6 @@ a.cite:hover{background:var(--grijs2)}
     <h1>Leerkompas Palliatieve Zorg</h1>
     <p>Materialen en werkvormen voor deskundigheidsbevordering in palliatieve zorg</p>
   </div>
-  <span class="hdr-concept" aria-label="Conceptversie">CONCEPT</span>
   <div class="hdr-zoek" role="search">
     <input type="search" id="zk-q" placeholder="Zoek in het hele Leerkompas" aria-label="Zoek in het hele Leerkompas" autocomplete="off">
     <div class="zk-res" id="zk-res" hidden></div>
@@ -559,6 +569,7 @@ a.cite:hover{background:var(--grijs2)}
 </div>
 
 <div class="kruimel" id="kruimel" hidden></div>
+<div class="bl-terugbalk" id="nav-terugbalk" hidden><button class="btn" onclick="terugNaarVorige()">‹ Terug naar waar je was</button><span id="nav-terug-naar"></span></div>
 
 <!-- ================= VOORPAGINA ================= -->
 <div class="tabpane on" id="tab-home">
@@ -606,14 +617,14 @@ a.cite:hover{background:var(--grijs2)}
       </div>
       <div class="toepas-card tp4">
         <span class="toepas-ic">🎓</span>
-        <div class="toepas-ttl">Bestaand leeraanbod benutten</div>
-        <div class="toepas-txt">Om medewerkers passende scholing te laten volgen, extern of in company.</div>
-        <div class="toepas-vb"><b>Bijvoorbeeld:</b> scholingen uit het <a href="#" onclick="goTo({tab:'leer'});return false" style="color:var(--dk);font-weight:700">leeraanbod</a>, te zoeken op niveau of rol.</div>
+        <div class="toepas-ttl">Bestaand deskundigheidsbevorderend aanbod benutten</div>
+        <div class="toepas-txt">Om niet zelf het wiel uit te vinden: laat medewerkers passende scholing volgen (extern of in company), of zet eerder ontwikkelde werkvormen, presentaties en trainershandleidingen in je eigen organisatie in.</div>
+        <div class="toepas-vb"><b>Bijvoorbeeld:</b> scholingen uit het <a href="#" onclick="goTo({tab:'leer'});return false" style="color:var(--dk);font-weight:700">leeraanbod</a>, te zoeken op niveau of rol, en lesmateriaal, presentaties en trainershandleidingen bij de <a href="#" onclick="goTo({tab:'kennis',thema:1});return false" style="color:var(--dk);font-weight:700">werkvormen per kernelement</a> en op <a href="https://palliaweb.nl/onderwijsmaterialen" target="_blank" rel="noopener" style="color:var(--dk);font-weight:700">Palliaweb onderwijsmaterialen</a>.</div>
       </div>
       <div class="toepas-card tp5">
         <span class="toepas-ic">💬</span>
         <div class="toepas-ttl">Inspiratie &amp; reflectie</div>
-        <div class="toepas-txt">Om inspiratie, erkenning en herkenning op te halen, en het gesprek over kwaliteit van leven en sterven op gang te brengen.</div>
+        <div class="toepas-txt">Om inspiratie, erkenning en herkenning op te halen, en het gesprek over palliatieve zorg, en kwaliteit van leven en sterven op gang te brengen.</div>
         <div class="toepas-vb"><b>Bijvoorbeeld:</b> ervaringsverhalen van patiënten en naasten, De reis van Esther, moreel beraad, podcasts en spellen.</div>
       </div>
       <div class="toepas-card tp6">
@@ -643,7 +654,7 @@ a.cite:hover{background:var(--grijs2)}
 
     <h3>Nog te vaak niet passend</h3>
     <div class="stat-box">
-      <p>Dat gaat nu lang niet altijd goed. Een analyse van declaratiedata laat zien dat <b>ruim 77%</b> van de patiënten die in Midden-Nederland niet onverwacht overlijdt, nog geen of niet-volledig passende zorg in de palliatieve fase heeft gekregen; deze groep krijgt in de laatste maanden voor het overlijden aanzienlijk meer tweedelijns zorg dan de groep die dit wel heeft gekregen.<a class="cite" href="#bron14" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 11: &quot;Een verkennende analyse... op basis van declaratiedata van zorgverzekeraar Zilveren Kruis laat zien dat ruim 77% van patiënten die niet onverwacht overlijdt in Midden-Nederland nog geen of niet-volledig passende zorg in de palliatieve fase heeft gekregen. Deze groep krijgt in de laatste maanden voor het overlijden aanzienlijk meer tweedelijns zorg (&#39;consumeert&#39; in verzekeraarsterminologie) dan de groep die dit wel heeft gekregen.&quot;">[14]</a></p>
+      <p>Dat gaat nu lang niet altijd goed. Een analyse van declaratiedata laat zien dat <b>ruim 77%</b> van de patiënten die in Midden-Nederland niet onverwacht overlijdt, nog geen of niet-volledig passende zorg in de palliatieve fase heeft gekregen; deze groep krijgt in de laatste maanden voor het overlijden aanzienlijk meer tweedelijns zorg dan de groep die wel passende zorg heeft gekregen.<a class="cite" href="#bron14" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 11: &quot;Een verkennende analyse... op basis van declaratiedata van zorgverzekeraar Zilveren Kruis laat zien dat ruim 77% van patiënten die niet onverwacht overlijdt in Midden-Nederland nog geen of niet-volledig passende zorg in de palliatieve fase heeft gekregen. Deze groep krijgt in de laatste maanden voor het overlijden aanzienlijk meer tweedelijns zorg (&#39;consumeert&#39; in verzekeraarsterminologie) dan de groep die dit wel heeft gekregen.&quot;">[14]</a></p>
     </div>
 
     <h3>Gevolgen van niet-passende zorg</h3>
@@ -655,28 +666,28 @@ a.cite:hover{background:var(--grijs2)}
     </div></div>
 
     <div class="sec-card s2"><div class="sec-hdr" onclick="toggleSec(this.parentNode)"><span class="num">2</span><span class="ttl">Het transformatieplan</span><span class="sub">Initiatiefnemers, looptijd en actielijnen</span><span class="chev">&#9662;</span></div><div class="sec-body">
-    <p>Om dit te verbeteren is het Transformatieplan palliatieve zorg Midden-Nederland (versie 2.11, definitief, 29 augustus 2025) opgesteld, vanuit het Integraal Zorgakkoord (IZA) en het Nationaal Programma Palliatieve Zorg II (NPPZ II).<a class="cite" href="#bron1" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 3, 11">[1]</a> Midden-Nederland is de derde regio in Nederland die zo'n transformatieplan heeft opgesteld, na Drenthe en de Mijnstreek.<a class="cite" href="#bron1" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 3, 11">[1]</a> Het plan is geïnitieerd vanuit de regionale huisartsenzorg (Unicum), de netwerken palliatieve zorg en het consortium Septet, en wordt gedragen door de vier regionale huisartsenorganisaties, vijf netwerken palliatieve zorg, vier ziekenhuizen, de Regionale Ambulance Voorziening Utrecht (RAVU) en vele aanbieders van thuiszorg, hospicezorg, verpleeghuiszorg en ggz in de regio.<a class="cite" href="#bron2" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — Voorwoord, p. iii, 8">[2]</a> De transformatie loopt van 2025 tot en met 2027 en werkt langs zes actielijnen: maatschappelijke bewustwording, afspraken op alle niveaus, deskundigheidsbevordering, spiegel- en stuurinformatie, digitale ondersteuning en passende financiering.<a class="cite" href="#bron3" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — Samenvatting en leeswijzer, p. v">[3]</a> Deze actielijnen liggen niet vast: werkafspraken worden gedurende de transformatieperiode periodiek geëvalueerd en zo nodig herzien, in samenspraak met de betrokken organisaties.<a class="cite" href="#bron4" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 32, 44">[4]</a></p>
+    <p>Om dit te verbeteren is het Transformatieplan palliatieve zorg Midden-Nederland (versie 2.11, definitief, 29 augustus 2025) opgesteld, vanuit het Integraal Zorgakkoord (IZA) en het Nationaal Programma Palliatieve Zorg II (NPPZ II).<a class="cite" href="#bron1" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 3, 11">[1]</a> Midden-Nederland is de derde regio in Nederland die zo'n transformatieplan heeft opgesteld, na Drenthe en de Mijnstreek.<a class="cite" href="#bron1" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 3, 11">[1]</a> Het plan is geïnitieerd vanuit de regionale huisartsenzorg (Unicum), de netwerken palliatieve zorg en het consortium Septet, en wordt gedragen door de vier regionale huisartsenorganisaties, vijf netwerken palliatieve zorg, vier ziekenhuizen, de Regionale Ambulance Voorziening Utrecht (RAVU) en vele aanbieders van thuiszorg, hospicezorg, verpleeghuiszorg en ggz in de regio.<a class="cite" href="#bron2" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — Voorwoord, p. iii, 8">[2]</a> De transformatie loopt van 2025 tot en met 2027 en werkt langs zes actielijnen: maatschappelijke bewustwording, afspraken op alle niveaus, deskundigheidsbevordering, spiegel- en stuurinformatie, digitale ondersteuning en passende financiering.<a class="cite" href="#bron3" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — Samenvatting en leeswijzer, p. v">[3]</a> Dit Leerkompas Palliatieve Zorg is ontwikkeld in het kader van de actielijn deskundigheidsbevordering.</p>
     <div class="tr-lijnen-lbl">De zes actielijnen</div>
     <div class="tr-lijnen"><span class="tr-lijn">Maatschappelijke bewustwording</span><span class="tr-lijn">Afspraken op alle niveaus</span><span class="tr-lijn deze" title="Het Leerkompas hoort bij deze actielijn">Deskundigheidsbevordering</span><span class="tr-lijn">Spiegel- en stuurinformatie</span><span class="tr-lijn">Digitale ondersteuning</span><span class="tr-lijn">Passende financiering</span></div>
     </div></div>
 
     <div class="sec-card s3"><div class="sec-hdr" onclick="toggleSec(this.parentNode)"><span class="num">3</span><span class="ttl">Wens van de patiënten</span><span class="sub">Acht aanbevelingen uit &quot;Een kwestie van geluk&quot;</span><span class="chev">&#9662;</span></div><div class="sec-body">
-    <p>Aan de basis van het plan staat de patiëntverkenning "Een kwestie van geluk", waarin patiënten en naasten uit de netwerken Utrecht Stad en Zuidoost-Utrecht zijn geïnterviewd over hun ervaringen in de palliatieve fase.<a class="cite" href="#bron5" title="Netwerken Palliatieve Zorg Utrecht Stad en Zuidoost-Utrecht, &quot;Een kwestie van geluk, palliatieve zorg doe je samen&quot; — patiëntenverkenning, 2023">[5]</a> Daaruit kwamen acht aanbevelingen naar voren om palliatieve zorg en ondersteuning te verbeteren:<a class="cite" href="#bron5" title="Netwerken Palliatieve Zorg Utrecht Stad en Zuidoost-Utrecht, &quot;Een kwestie van geluk, palliatieve zorg doe je samen&quot; — patiëntenverkenning, 2023">[5]</a></p>
-    <ol class="kernlist">
-      <li>Zorgverleners draaien niet om de dood heen</li>
-      <li>Palliatieve ondersteuning en zorg ontvangen is geen kwestie van geluk</li>
-      <li>Een wegwijzer geeft patiënten en naasten toegang tot heldere informatie</li>
-      <li>Een vast contactpersoon is laagdrempelig beschikbaar</li>
-      <li>Warme overdracht: zorgverleners zijn verantwoordelijk tot de overdracht is voltooid</li>
-      <li>Deskundigheid is normaal, zorgaanbieders vervullen die verantwoordelijkheid</li>
-      <li>Consultatie van in palliatieve zorg gespecialiseerde professionals is 24/7 beschikbaar</li>
-      <li>Oog voor naasten is vanzelfsprekend</li>
+    <p>Aan de basis van de transformatie staat de patiëntverkenning "Een kwestie van geluk", waarin patiënten en naasten uit de netwerken Utrecht Stad en Zuidoost-Utrecht zijn geïnterviewd over hun ervaringen in de palliatieve fase.<a class="cite" href="#bron5" title="Netwerken Palliatieve Zorg Utrecht Stad en Zuidoost-Utrecht, &quot;Een kwestie van geluk, palliatieve zorg doe je samen&quot; — patiëntenverkenning, 2023">[5]</a> Daaruit kwamen acht aanbevelingen naar voren om palliatieve zorg en ondersteuning te verbeteren:<a class="cite" href="#bron5" title="Netwerken Palliatieve Zorg Utrecht Stad en Zuidoost-Utrecht, &quot;Een kwestie van geluk, palliatieve zorg doe je samen&quot; — patiëntenverkenning, 2023">[5]</a></p>
+    <ol class="aanb-grid">
+      <li><span class="aanb-n">1</span><span>Zorgverleners draaien niet om de dood heen</span></li>
+      <li><span class="aanb-n">2</span><span>Palliatieve ondersteuning en zorg ontvangen is geen kwestie van geluk</span></li>
+      <li><span class="aanb-n">3</span><span>Een wegwijzer geeft patiënten en naasten toegang tot heldere informatie</span></li>
+      <li><span class="aanb-n">4</span><span>Een vast contactpersoon is laagdrempelig beschikbaar</span></li>
+      <li><span class="aanb-n">5</span><span>Warme overdracht: zorgverleners zijn verantwoordelijk tot de overdracht is voltooid</span></li>
+      <li class="aanb-dkb"><span class="aanb-n">6</span><span>Deskundigheid is normaal, zorgaanbieders vervullen die verantwoordelijkheid<span class="aanb-tag">Actielijn deskundigheidsbevordering</span></span></li>
+      <li><span class="aanb-n">7</span><span>Consultatie van in palliatieve zorg gespecialiseerde professionals is 24/7 beschikbaar</span></li>
+      <li><span class="aanb-n">8</span><span>Oog voor naasten is vanzelfsprekend</span></li>
     </ol>
     <p>Patiënten en naasten gaven onder meer aan behoefte te hebben aan één aanspreekpunt: "Ik had zo graag gewild dat er één persoon was aan wie ik al mijn vragen kon stellen. Iemand die naast je staat, die vertelt wat er kan gebeuren."<a class="cite" href="#bron6" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 9 (citaat patiëntenverkenning)">[6]</a></p>
     </div></div>
 
     <div class="sec-card s4"><div class="sec-hdr" onclick="toggleSec(this.parentNode)"><span class="num">4</span><span class="ttl">Beoogde resultaten</span><span class="sub">Van een kwestie van geluk naar een staat van vertrouwen</span><span class="chev">&#9662;</span></div><div class="sec-body">
-    <p>De ambitie is dat iedere inwoner van Midden-Nederland aan het einde van de transformatieperiode (2025–2027), in elk geval in het laatste levensjaar, kan rekenen op kwalitatief goede, transmuraal georganiseerde, passende zorg in de palliatieve fase — van een "kwestie van geluk" naar een "staat van vertrouwen".<a class="cite" href="#bron7" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 12">[7]</a> Wanneer alle patiënten die niet onverwacht overlijden goede palliatieve zorg ontvangen, kan dit naar verwachting jaarlijks tot 900 SEH-bezoeken, 10.500 klinische ligdagen en 2.700 IC-ligdagen in het laatste levensjaar besparen.<a class="cite" href="#bron8" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — Figuur 13, p. 36-37">[8]</a> De voortgang wordt gedurende de transformatieperiode gevolgd met 32 KPI's, waarvan er 21 gekoppeld zijn aan transformatiegelden.<a class="cite" href="#bron9" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 42">[9]</a></p>
+    <p>De ambitie is dat iedere inwoner van Midden-Nederland aan het einde van de transformatieperiode (2025–2027), in elk geval in het laatste levensjaar, kan rekenen op kwalitatief goede, transmuraal georganiseerde, passende zorg in de palliatieve fase — van een "kwestie van geluk" naar een "staat van vertrouwen".<a class="cite" href="#bron7" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — p. 12">[7]</a> Wanneer alle patiënten die niet onverwacht overlijden goede palliatieve zorg ontvangen, kan dit naar verwachting jaarlijks tot 900 SEH-bezoeken, 10.500 klinische ligdagen en 2.700 IC-ligdagen in het laatste levensjaar besparen.<a class="cite" href="#bron8" title="Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025) — Figuur 13, p. 36-37">[8]</a></p>
     </div></div>
 
     <div class="sec-card s1"><div class="sec-hdr" onclick="toggleSec(this.parentNode)"><span class="num">5</span><span class="ttl">De kernelementen van het beoogde zorgsysteem</span><span class="sub">Markering, PZP, coördinatie en consultatie</span><span class="chev">&#9662;</span></div><div class="sec-body">
@@ -696,12 +707,10 @@ a.cite:hover{background:var(--grijs2)}
         <li id="bron1"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — p. 3, 11</li>
         <li id="bron2"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — Voorwoord, p. iii, 8</li>
         <li id="bron3"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — Samenvatting en leeswijzer, p. v</li>
-        <li id="bron4"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — p. 32, 44</li>
         <li id="bron5">Netwerken Palliatieve Zorg Utrecht Stad en Zuidoost-Utrecht, <a href="https://palliaweb.nl/getattachment/e6fb215f-e030-499b-8601-277f53726c52/Een-kwestie-van-geluk-2023-los.pdf" target="_blank" rel="noopener">"Een kwestie van geluk, palliatieve zorg doe je samen"</a> — patiëntenverkenning, 2023</li>
         <li id="bron6"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — p. 9 (citaat patiëntenverkenning)</li>
         <li id="bron7"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — p. 12</li>
         <li id="bron8"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — Figuur 13, p. 36-37</li>
-        <li id="bron9"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — p. 42</li>
         <li id="bron10"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — Figuur 8, p. 13-14</li>
         <li id="bron11"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — p. 15</li>
         <li id="bron12"><a href="https://palliaweb.nl/getmedia/55218239-5c3b-4f5a-93b1-a0a117e533d4/Transformatieplan-palliatieve-zorg-Midden-Nederland-29-augustus-2025-v2-11.pdf" target="_blank" rel="noopener">Transformatieplan palliatieve zorg Midden-Nederland, v2.11 (29-8-2025)</a> — p. 16</li>
@@ -827,7 +836,7 @@ a.cite:hover{background:var(--grijs2)}
     <h3>Hoe help je hen hun deskundigheid op peil te houden?</h3>
     <ul class="vw-lijst" style="font-size:12.5px">
       <li><b>Breng in beeld waar zorgprofessionals staan:</b> zet de <a href="https://palliaweb.nl/onderwijs/competentiescan-palliatieve-zorg" target="_blank" rel="noopener">Competentiescan Palliatieve Zorg</a> of de <a href="https://nppz.org/kwaliteitskader-palliatieve-zorg/kennisquiz-palliatieve-zorg/" target="_blank" rel="noopener">Kennisquiz palliatieve zorg</a> in, individueel of in een team.</li>
-      <li><b>Kies scholing die bij hun functie past:</b> zoek in het <a href="#" onclick="goTo({tab:'leer'});return false">leeraanbod</a> op niveau of rol.</li>
+      <li><b>Kies scholing die bij hun functie en behoefte past:</b> zoek in het <a href="#" onclick="goTo({tab:'leer'});return false">leeraanbod</a> op niveau of rol.</li>
       <li><b>Organiseer leren in en rond het werk:</b> gebruik de <a href="#" onclick="goTo({tab:'kennis',thema:'leren'});return false">vormen van leren</a> en de werkvormen bij de kernelementen.</li>
       <li><b>Houd kennis actueel:</b> <a href="https://palliaweb.nl/e-pal" target="_blank" rel="noopener">e-pal</a> biedt toegankelijke informatie uit internationale tijdschriften, om zelf te volgen of te delen.</li>
     </ul>
@@ -862,7 +871,10 @@ a.cite:hover{background:var(--grijs2)}
     <div class="kad-lijst">
       <a class="kad-rij" href="https://kwaliteitskader.palliaweb.nl/system/files/2026-10/kwaliteitskader-palliatieve-zorg-nederland_web-6-10_0.pdf" target="_blank" rel="noopener"><span class="kad-t">Kwaliteitskader palliatieve zorg Nederland, editie 2 (2026)</span><span class="kad-d">Eenduidig beeld van goede palliatieve zorg, met standaarden en criteria per thema; basis voor beleid in organisaties. Het Leerkompas is op deze editie afgestemd.</span></a>
       <a class="kad-rij" href="https://palliaweb.nl/onderwijs/interprofessioneelopleiden/download-onderwijsraamwerk-2-0" target="_blank" rel="noopener"><span class="kad-t">Onderwijsraamwerk palliatieve zorg 2.0</span><span class="kad-d">Competenties van zorgverleners op niveau 2 tot en met 8 voor goede palliatieve zorg (mbo, hbo, wo).</span></a>
-      <a class="kad-rij" href="https://palliaweb.nl/getmedia/1f26ced1-d5cb-4c49-9561-a0ebbf714b65/O2PZ-Basisprofiel-voor-in-palliatieve-zorg-gespecialiseerde-zorgverleners-v11-DEF.pdf" target="_blank" rel="noopener"><span class="kad-t">Basisprofiel voor in palliatieve zorg gespecialiseerde zorgverleners</span><span class="kad-d">Competenties van gespecialiseerde zorgverleners; aanvulling op het Onderwijsraamwerk 2.0 (O²PZ, 2025).</span></a>
+      <a class="kad-rij" href="https://palliaweb.nl/getmedia/1f26ced1-d5cb-4c49-9561-a0ebbf714b65/O2PZ-Basisprofiel-voor-in-palliatieve-zorg-gespecialiseerde-zorgverleners-v11-DEF.pdf" target="_blank" rel="noopener"><span class="kad-t">Basisprofiel voor in palliatieve zorg gespecialiseerde zorgverleners</span><span class="kad-d">Competenties per beroepsgroep (verzorgende IG, verpleegkundige, VS/PA, arts) voor zorgverleners die zich specialiseren in palliatieve zorg; aanvulling op het Onderwijsraamwerk 2.0. Beroepsverenigingen vertalen dit naar hun eigen profielen, zoals de twee V&amp;VN-profielen hieronder (O²PZ, 2025).</span></a>
+      <a class="kad-rij" href="https://palliaweb.nl/getmedia/894ee286-f99d-4a88-bde9-8450ae66d8d4/vvn_profiel__palliatieve_zorg_verzorgende.pdf" target="_blank" rel="noopener"><span class="kad-t">Profiel Gespecialiseerd Verzorgende IG Palliatieve Zorg</span><span class="kad-d">Beroepsprofiel van V&amp;VN (2024) voor de verzorgende IG die zich heeft gespecialiseerd in palliatieve zorg. Bruikbaar als basis voor een functieomschrijving of opleidingstraject.</span></a>
+      <a class="kad-rij" href="https://palvoorprofs.nl/uploads/files/vvn_-profiel_paliatieve_zorg_(om_te_printen)_(1).pdf" target="_blank" rel="noopener"><span class="kad-t">Profiel Palliatieve zorg verpleegkundige</span><span class="kad-d">Beroepsprofiel van V&amp;VN (2022) voor de mbo- en hbo-verpleegkundige met specialisatie palliatieve zorg. Bruikbaar als basis voor een functieomschrijving of opleidingstraject.</span></a>
+      <div class="kad-rij kad-rij-tekst"><span class="kad-t">Profielen voor artsen en verpleegkundig specialisten</span><span class="kad-d">Het kwaliteitskader (p. 44) verwijst ook naar het <a href="https://www.venvn.nl/media/sopp4ccx/4_profiel-verpleegkundig-specialist_def.pdf" target="_blank" rel="noopener">profiel verpleegkundig specialist</a> (V&amp;VN VS), het <a href="https://www.verenso.nl/assets/verenso_competentieprofiel2019_v2.pdf" target="_blank" rel="noopener">competentieprofiel specialist ouderengeneeskunde</a> (Verenso, 2019) en het <a href="https://www.kaderopleidingpalliatievezorg.nl/opleiding/competentieprofiel/" target="_blank" rel="noopener">competentieprofiel Kaderopleiding Palliatieve Zorg</a>. De kaderopleiding heeft de competenties voor artsen uit het O²PZ-basisprofiel als eindtermen.</span></div>
       <a class="kad-rij" href="https://palliaweb.nl/richtlijnen-palliatieve-zorg/richtlijn/proactieve-zorgplanning" target="_blank" rel="noopener"><span class="kad-t">Richtlijn Proactieve zorgplanning</span><span class="kad-d">Wetenschappelijk onderbouwde aanbevelingen voor proactieve zorgplanning in alle zorgsettings.</span></a>
       <a class="kad-rij" href="https://palliaweb.nl/getmedia/17439e8b-4eea-4bb5-bf5b-1208dba9a417/Kaders-voor-een-landelijke-pzp-scholing-voor-medisch-specialisten.pdf" target="_blank" rel="noopener"><span class="kad-t">Kaders PZP-scholing medisch specialisten</span><span class="kad-d">Landelijke kaders voor training in proactieve zorgplanning voor medisch specialisten in het ziekenhuis.</span></a>
       <a class="kad-rij" href="https://open.overheid.nl/documenten/08462f05-243d-4da4-898b-6473808011ca/file" target="_blank" rel="noopener"><span class="kad-t">Aanvullend Zorg- en Welzijnsakkoord (AZWA)</span><span class="kad-d">Afspraak dat alle zorg- en welzijnsmedewerkers bij- en nascholing palliatieve zorg krijgen, inclusief PZP-gesprekken.</span></a>
@@ -877,7 +889,6 @@ a.cite:hover{background:var(--grijs2)}
       <a class="kad-rij" href="https://www.palliactief.nl/congressen-symposia" target="_blank" rel="noopener"><span class="kad-t">Palliactief</span><span class="kad-d">Congressen en symposia van de Nederlandse vereniging voor professionele palliatieve zorg.</span></a>
       <a class="kad-rij" href="https://carend.nl/overzichtspagina" target="_blank" rel="noopener"><span class="kad-t">Carend</span><span class="kad-d">Webinars, congressen en scholingen over palliatieve zorg.</span></a>
     </div>
-    <div class="bronkort" style="margin-top:18px">Bron van deze pagina: <span data-citeref="kaders"></span></div>
   </div>
 </div>
 
@@ -931,7 +942,7 @@ a.cite:hover{background:var(--grijs2)}
 </div>
 
 <div class="ftr">
-  <span>TPZ Midden-Nederland · Leerkompas Palliatieve Zorg · versie 16-10-2026 · <a href="#" onclick="goTo({tab:'colofon'});return false">Colofon en disclaimer</a> · <a href="#" onclick="goTo({tab:'bronnen'});return false">Bronnenlijst</a></span>
+  <span>TPZ Midden-Nederland · Leerkompas Palliatieve Zorg · versie 19-10-2026 · <a href="#" onclick="goTo({tab:'colofon'});return false">Colofon en disclaimer</a> · <a href="#" onclick="goTo({tab:'bronnen'});return false">Bronnenlijst</a></span>
 </div>
 
 <script>
@@ -948,59 +959,59 @@ const WA_NOOT = ' <span class="wa-noot">De regionale werkafspraken gebruiken dee
 const BASISBEGRIPPEN_CONTENT = {
   0: {
     paragrafen: [
-      { key:'palliatieve-zorg', h:'Wat is palliatieve zorg?', p:'Palliatieve zorg is zorg die de kwaliteit van het leven verbetert van patiënten en hun naasten die te maken hebben met een levensbedreigende aandoening of toenemende kwetsbaarheid, door het voorkomen en verlichten van lijden, door middel van vroegtijdige signalering en zorgvuldige beoordeling en behandeling van problemen van fysieke, psychische, sociale en spirituele aard. Gedurende het beloop van de ziekte of kwetsbaarheid heeft palliatieve zorg oog voor het behoud van autonomie, toegang tot informatie en keuzemogelijkheden.'+c(1)+' Het kwaliteitskader geldt voor alle patiënten, van pasgeborenen tot mensen op hoge leeftijd.'+c(1) },
+      { key:'palliatieve-zorg', h:'Wat is palliatieve zorg?', p:'Palliatieve zorg is zorg die de kwaliteit van het leven verbetert van patiënten en diens naasten die te maken hebben met een levensbedreigende aandoening of toenemende kwetsbaarheid, door het voorkomen en verlichten van lijden, door middel van vroegtijdige signalering en zorgvuldige beoordeling en behandeling van problemen van fysieke, psychische, sociale en spirituele aard. Gedurende het beloop van de ziekte of kwetsbaarheid heeft palliatieve zorg oog voor het behoud van autonomie, toegang tot informatie en keuzemogelijkheden.'+c(1) },
       { h:'Wat kenmerkt palliatieve zorg?', p:'Palliatieve zorg kan gelijktijdig met ziektegerichte behandeling worden verleend. Professionals en vrijwilligers werken samen als een interdisciplinair team, in nauwe samenwerking met de patiënt en de naasten, en stemmen zorg en ondersteuning af op de waarden, wensen en behoeften van de patiënt. Een centrale zorgverlener coördineert de zorg met het oog op de continuïteit. Waar nodig worden zorgprofessionals ondersteund door in palliatieve zorg gespecialiseerde zorgprofessionals. De wensen van patiënt en naasten rond waardigheid worden erkend en gesteund, ook tijdens het stervensproces en na de dood.'+c(1) },
       { key:'palliatieve-fase', h:'Wanneer bevindt iemand zich in de palliatieve fase?', p:'De palliatieve fase start bij de diagnose van een levensbedreigende aandoening of toenemende kwetsbaarheid. De focus van zorg verschuift naar kwaliteit van leven en sterven. Afhankelijk van het verloop van het ziekteproces kan de palliatieve fase een korte, maar ook een jarenlange periode betreffen.'+c(2)+' Bij sommige aandoeningen of kwetsbaarheid is het moment waarop de focus verschuift diffuus, waardoor de start van de palliatieve fase niet eenduidig te bepalen is.'+c(3) },
       { key:'stervensfase', h:'De palliatieve fase is niet hetzelfde als de stervensfase', p:'De stervensfase omvat de laatste dagen (tot zeven dagen) van het leven. Er is sprake van een onomkeerbaar \'fysiologisch\' proces dat in gang is gezet, waardoor het overlijden aanstaande is.'+c(2) },
-      { key:'continuum', h:'Van ziektegerichte naar symptoomgerichte palliatie', p:'Het kwaliteitskader onderscheidt ziektegerichte palliatie, symptoomgerichte palliatie, palliatie in de stervensfase en nazorg.'+c(1)+' Ziektegerichte palliatie beoogt de kwaliteit van leven te handhaven of te verbeteren door de onderliggende ziekte te behandelen; symptoomgerichte palliatie doet dat door klachten en symptomen te verlichten en zo mogelijk te voorkomen. In de praktijk zijn beide sterk verweven: ze sluiten elkaar nooit uit en worden vaak tegelijk toegepast.'+c(2)+' Uiteindelijk gaan ze over in zorg in de stervensfase en nazorg.'+c(1), img:'<div class="pz-diagram"><svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><defs><marker id="pzArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a1a2e"/></marker><marker id="pzArrowStart" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 Z" fill="#1a1a2e"/></marker></defs><text x="80" y="28" font-size="15" font-weight="700" fill="#1a1a2e">Het ziekteproces in de tijd</text><line x1="80" y1="50" x2="560" y2="50" stroke="#1a1a2e" stroke-width="2" marker-end="url(#pzArrow)"/><polygon points="80,90 470,90 80,230" fill="#efe9d6" stroke="#1a1a2e" stroke-width="1.5"/><text x="95" y="115" font-size="13" font-weight="600" fill="#1a1a2e">Zorg en behandeling</text><text x="95" y="132" font-size="13" font-weight="600" fill="#1a1a2e">gericht op de ziekte</text><polygon points="80,230 470,90 470,230" fill="#6e8fc0" stroke="#1a1a2e" stroke-width="1.5"/><text x="215" y="198" font-size="13" font-weight="600" fill="#fff">Zorg en behandeling</text><text x="215" y="215" font-size="13" font-weight="600" fill="#fff">gericht op de klachten</text><rect x="470" y="90" width="90" height="140" fill="#f0529c" stroke="#1a1a2e" stroke-width="1.5"/><text x="478" y="148" font-size="11" font-weight="700" fill="#fff">Zorg en</text><text x="478" y="162" font-size="11" font-weight="700" fill="#fff">behandeling</text><text x="478" y="176" font-size="11" font-weight="700" fill="#fff">in de</text><text x="478" y="190" font-size="11" font-weight="700" fill="#fff">stervensfase</text><polygon points="560,90 560,230 680,230" fill="#6e8fc0" stroke="#1a1a2e" stroke-width="1.5"/><text x="590" y="217" font-size="13" font-weight="600" fill="#fff">Nazorg</text><text x="4" y="205" font-size="13" font-weight="700" fill="#1a1a2e">Diagnose</text><line x1="48" y1="210" x2="78" y2="226" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#pzArrow)"/><text x="596" y="42" font-size="13" font-weight="700" fill="#1a1a2e">Dood</text><line x1="602" y1="50" x2="562" y2="87" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#pzArrow)"/><line x1="80" y1="258" x2="680" y2="258" stroke="#1a1a2e" stroke-width="2" marker-start="url(#pzArrowStart)" marker-end="url(#pzArrow)"/><text x="230" y="283" font-size="15" font-weight="700" fill="#1a1a2e">Palliatieve zorg en ondersteuning</text></svg><div class="pz-diagram-caption">Bron: Joanne Lynn &amp; David Adamson, via <a href="https://palliaweb.nl/zorgpraktijk/palliatieve-zorg" target="_blank" rel="noopener">Palliaweb</a></div></div>' },
-      { h:'Wie biedt palliatieve zorg?', p:'Iedere zorgprofessional moet zelf palliatieve zorg kunnen verlenen en heeft daarvoor aantoonbare basiskennis en vaardigheden. Waar nodig worden zorgprofessionals ondersteund door in palliatieve zorg gespecialiseerde zorgverleners. De benodigde competenties staan in het Onderwijsraamwerk palliatieve zorg 2.0 (niveau 2 tot en met 8); voor gespecialiseerde zorgverleners is er sinds 2025 een basisprofiel.'+c(1) }
+      { key:'continuum', h:'Ziektegerichte en symptoomgerichte palliatieve zorg', p:'Het kwaliteitskader onderscheidt ziektegerichte palliatieve zorg, symptoomgerichte palliatieve zorg, palliatieve zorg in de stervensfase en nazorg.'+c(1)+' Ziektegerichte palliatieve zorg omvat medische behandelingen gericht op het afremmen van de ziekte, vermindering van klachten en verlenging van het leven. Symptoomgerichte palliatieve zorg beoogt de kwaliteit van leven te handhaven of te verbeteren door klachten en symptomen te verlichten en zo mogelijk te voorkomen. In de praktijk zijn beide sterk verweven: ze sluiten elkaar nooit uit en worden vaak tegelijk toegepast, zodat ze elkaar kunnen versterken ter verbetering van kwaliteit van leven.'+c(2)+' Uiteindelijk gaan ze over in zorg in de stervensfase en nazorg.'+c(1), img:'<div class="pz-diagram"><svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><defs><marker id="pzArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a1a2e"/></marker><marker id="pzArrowStart" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 Z" fill="#1a1a2e"/></marker></defs><text x="80" y="28" font-size="15" font-weight="700" fill="#1a1a2e">Het ziekteproces in de tijd</text><line x1="80" y1="50" x2="560" y2="50" stroke="#1a1a2e" stroke-width="2" marker-end="url(#pzArrow)"/><polygon points="80,90 470,90 80,230" fill="#efe9d6" stroke="#1a1a2e" stroke-width="1.5"/><text x="95" y="115" font-size="13" font-weight="600" fill="#1a1a2e">Zorg en behandeling</text><text x="95" y="132" font-size="13" font-weight="600" fill="#1a1a2e">gericht op de ziekte</text><polygon points="80,230 470,90 470,230" fill="#6e8fc0" stroke="#1a1a2e" stroke-width="1.5"/><text x="215" y="198" font-size="13" font-weight="600" fill="#fff">Zorg en behandeling</text><text x="215" y="215" font-size="13" font-weight="600" fill="#fff">gericht op de klachten</text><rect x="470" y="90" width="90" height="140" fill="#f0529c" stroke="#1a1a2e" stroke-width="1.5"/><text x="478" y="148" font-size="11" font-weight="700" fill="#fff">Zorg en</text><text x="478" y="162" font-size="11" font-weight="700" fill="#fff">behandeling</text><text x="478" y="176" font-size="11" font-weight="700" fill="#fff">in de</text><text x="478" y="190" font-size="11" font-weight="700" fill="#fff">stervensfase</text><polygon points="560,90 560,230 680,230" fill="#6e8fc0" stroke="#1a1a2e" stroke-width="1.5"/><text x="590" y="217" font-size="13" font-weight="600" fill="#fff">Nazorg</text><text x="4" y="205" font-size="13" font-weight="700" fill="#1a1a2e">Diagnose</text><line x1="48" y1="210" x2="78" y2="226" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#pzArrow)"/><text x="596" y="42" font-size="13" font-weight="700" fill="#1a1a2e">Dood</text><line x1="602" y1="50" x2="562" y2="87" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#pzArrow)"/><line x1="80" y1="258" x2="680" y2="258" stroke="#1a1a2e" stroke-width="2" marker-start="url(#pzArrowStart)" marker-end="url(#pzArrow)"/><text x="230" y="283" font-size="15" font-weight="700" fill="#1a1a2e">Palliatieve zorg en ondersteuning</text></svg><div class="pz-diagram-caption">Bron: Joanne Lynn &amp; David Adamson, via <a href="https://palliaweb.nl/zorgpraktijk/palliatieve-zorg" target="_blank" rel="noopener">Palliaweb</a></div></div>' },
+      { h:'Wie biedt palliatieve zorg?', p:'Iedere zorgprofessional moet zelf palliatieve zorg kunnen verlenen en heeft daarvoor aantoonbare basiskennis en vaardigheden. Waar nodig worden zorgprofessionals ondersteund door in palliatieve zorg gespecialiseerde zorgverleners. De benodigde competenties staan in het <a href="https://palliaweb.nl/onderwijs/interprofessioneelopleiden/download-onderwijsraamwerk-2-0" target="_blank" rel="noopener">Onderwijsraamwerk palliatieve zorg 2.0</a> (niveau 2 tot en met 8); voor gespecialiseerde zorgverleners is er sinds 2025 een <a href="https://palliaweb.nl/getmedia/1f26ced1-d5cb-4c49-9561-a0ebbf714b65/O2PZ-Basisprofiel-voor-in-palliatieve-zorg-gespecialiseerde-zorgverleners-v11-DEF.pdf" target="_blank" rel="noopener">basisprofiel</a>.'+c(1) }
     ],
     bronnen: [ KK('Inleiding, p. 6-8'), KK('Begrippenkader, p. 57-70'), KK('5.1 Signaleren en markeren, p. 26-27') ]
   },
   1: {
     paragrafen: [
-      { key:'markering', h:'Wat is markeren?', p:'Markering is het vaststellen van de start van de palliatieve fase. Die start ligt bij de diagnose van een levensbedreigende aandoening of toenemende kwetsbaarheid; de focus van zorg en ondersteuning verschuift naar kwaliteit van leven en sterven.'+c(2)+' Goede palliatieve zorg begint bij een tijdige markering: de verandering van doelstelling wordt gemarkeerd en uitgesproken.'+c(1) },
-      { h:'Wat is signaleren, en wie signaleert?', p:'Een groeiende behoefte aan palliatieve zorg op een of meer van de vier dimensies kan aanleiding zijn om de focus van zorg te verschuiven en de start van de palliatieve fase te markeren. Dat signaleren doen de bij de patiënt betrokken zorgprofessionals, maar de behoefte kan ook blijken uit vragen of geuite behoeften van de patiënt zelf of de naasten. Signaleert een andere zorgprofessional dan de hoofdbehandelaar de palliatieve fase, dan bespreekt die dit met de hoofdbehandelaar.'+c(1) },
+      { key:'markering', h:'Wat is markeren?', p:'Markeren is het vaststellen van de start van de palliatieve fase. De palliatieve fase start bij de diagnose van een levensbedreigende aandoening of toenemende kwetsbaarheid. De focus van zorg en ondersteuning verschuift naar kwaliteit van leven en sterven. Afhankelijk van het verloop van het ziekteproces kan de palliatieve fase een korte, maar ook een jarenlange periode betreffen.'+c(3)+' Goede palliatieve zorg begint bij een tijdige markering: de verandering van doelstelling wordt gemarkeerd en uitgesproken.'+c(1) },
+      { h:'Wat is signaleren, en wie signaleert?', p:'Ook het signaleren van groeiende behoefte aan palliatieve zorg op de vier dimensies kan aanleiding zijn voor verschuiving van de focus van zorg naar kwaliteit van leven en sterven en de start van de palliatieve fase markeren. Het signaleren van palliatieve zorgbehoeften wordt gedaan door bij de patiënt betrokken zorgprofessionals, maar kan ook duidelijk worden uit vragen of geuite behoeften van de patiënt zelf of diens naasten. Als een andere zorgprofessional de palliatieve fase signaleert, bespreekt de zorgprofessional dit met de hoofdbehandelaar.'+c(1) },
       { h:'Wie markeert de palliatieve fase?', p:'Het markeren valt onder de verantwoordelijkheid van de hoofdbehandelaar: de arts, verpleegkundig specialist of physician assistant die inhoudelijk verantwoordelijk is voor de palliatieve zorgverlening.'+c(1)+c(2)+' De hoofdbehandelaar zorgt ervoor dat de overige betrokken zorgprofessionals worden geïnformeerd en onderneemt samen met hen acties om de benodigde zorg en ondersteuning op te starten. Het markeren is verankerd in het zorgproces en wordt vastgelegd in het patiëntendossier.'+c(1)+WA_NOOT },
       { h:'Hoe gebruiken zorgprofessionals de surprise question?', p:'Is de start van de palliatieve fase niet eenduidig te bepalen, dan kan de surprise question helpen: "Zou het mij verbazen als deze patiënt in het komende jaar komt te overlijden?" Is het antwoord "nee", dan is dat een sterke indicatie om de palliatieve fase te markeren. De surprise question is uitdrukkelijk een reflectie-instrument voor de betrokken zorgprofessionals en wordt niet letterlijk met de patiënt of de naasten besproken. Het begrippenkader noemt de surprise question een praktisch hulpmiddel en geen harde voorspeller van het laatste levensjaar: het gaat erom dat patiënten met behoefte aan palliatieve zorg tijdig worden herkend en dat de betrokken zorgprofessionals samen gaan anticiperen op de zorg die komen gaat.'+c(1)+' Ze is niet geschikt als harde voorspeller van het laatste levensjaar; het gaat erom dat patiënten met behoefte aan palliatieve zorg tijdig worden herkend.'+c(2) },
       { h:'Hoe wordt de markering met de patiënt besproken?', p:'De patiënt en de naasten worden niet zomaar geconfronteerd met het scenario dat de patiënt aan de ziekte of toenemende kwetsbaarheid komt te overlijden. Eerst wordt verkend in hoeverre de patiënt in staat is en de wens heeft om over de palliatieve fase te spreken, en welke ondersteuning daarbij nodig is.'+c(1) },
       { h:'Waarom is markeren belangrijk?', p:'Tijdige palliatieve zorg en ondersteuning dragen sterk bij aan de kwaliteit van leven van patiënt en naasten. Vanaf de markering is er aandacht voor hun waarden, wensen en behoeften, en wordt kwaliteit van leven steeds meegewogen bij behandelkeuzes.'+c(1) },
       { h:'Ook latere kantelpunten herkennen', p:'Niet alleen de start van de palliatieve fase vraagt aandacht. Ook de vaak geleidelijke overgang van meer ziektegerichte naar meer symptoomgerichte behandeling en de overgang naar de stervensfase moeten worden herkend. Bij elk kantelpunt worden de zorgdoelen opnieuw afgestemd op de actuele situatie en op de waarden, wensen en behoeften van patiënt en naasten.'+c(1) }
     ],
-    bronnen: [ KK('5.1 Signaleren en markeren, p. 26-27'), KK('Begrippenkader (Markering, Hoofdbehandelaar, Surprise question), p. 57-70') ]
+    bronnen: [ KK('5.1 Signaleren en markeren, p. 26-27'), KK('Begrippenkader (Markering, Hoofdbehandelaar, Surprise question), p. 57-70'), KK('Begrippenkader, Markering, p. 62') ]
   },
   2: {
     paragrafen: [
-      { h:'Wat is proactieve zorgplanning?', p:'Proactieve zorgplanning is het proces van in gesprek gaan, vooruitdenken, plannen en organiseren van gewenste passende zorg in de palliatieve fase, op de fysieke, psychische, sociale en zingevings- en spirituele dimensie. Met samen beslissen als leidraad is het een continu en dynamisch proces van gesprekken over huidige en toekomstige levensdoelen en keuzes, en over welke zorg daar nu en in de toekomst bij past.'+c(2)+' Het is dus veel meer dan een wilsverklaring en het benoemen van een wettelijk vertegenwoordiger. Proactieve zorgplanning maakt standaard deel uit van palliatieve zorg.'+c(1) },
+      { h:'Wat is proactieve zorgplanning?', p:'Proactieve zorgplanning is het proces van in gesprek gaan, vooruitdenken, plannen en organiseren van gewenste passende zorg (in de palliatieve fase). Dit omvat zowel de fysieke, de psychische, de sociale als de zingeving en spirituele dimensie. Met samen beslissen als leidraad is proactieve zorgplanning een continu en dynamisch proces van gesprekken over huidige en toekomstige levensdoelen en keuzes en welke zorg daar nu en in de toekomst bij past.'+c(6)+' Het is dus veel meer dan een wilsverklaring en het benoemen van een wettelijk vertegenwoordiger. Proactieve zorgplanning maakt standaard deel uit van palliatieve zorg.'+c(1) },
       { h:'Wie brengt het ter sprake?', p:'Proactieve zorgplanning wordt tijdig en op passende wijze aan de orde gesteld, bij voorkeur door de hoofdbehandelaar of de centrale zorgverlener, maar het kan ook op initiatief van de patiënt en de naasten. De gemaakte afspraken worden gedeeld met andere betrokken zorgprofessionals en bij voorkeur vastgelegd in het proactief zorgplan. Er vinden herhaaldelijk gesprekken plaats.'+c(1)+WA_NOOT },
       { h:'Wanneer wordt proactieve zorgplanning gestart of geactualiseerd?', p:'De markering van de palliatieve fase is een belangrijk moment om (opnieuw) samen na te denken over de laatste levensfase. Andere momenten zijn onder meer: op aangeven van patiënt, naasten, zorgprofessionals of vrijwilligers; bij progressie van ziekte of kwetsbaarheid; in een vroeg stadium van ziekten die cognitieve stoornissen geven, zoals dementie; bij de overgang van ziektegerichte naar symptoomgerichte behandeling; bij meerdere ziekenhuisopnames in korte tijd; als de voordelen van ziektegerichte behandeling niet meer opwegen tegen de nadelen; bij verwachte functionele of cognitieve achteruitgang; bij opname in een verpleeghuis of hospice; en bij ernstig fysiek, psychisch of spiritueel lijden.'+c(1) },
       { h:'Hoe verloopt het gesprek?', p:'Het proces is stapsgewijs: het onderwerp van het eigen levenseinde introduceren, peilen of de patiënt erover wil spreken, onderwerpen inventariseren aan de hand van de vier dimensies, wederzijdse verwachtingen over ziektebeloop en overlijden bespreken, doelen en keuzes voor nu en later vaststellen, en stilstaan bij de rol van de mantelzorger of wettelijk vertegenwoordiger. Het gesprek sluit aan bij de gewenste mate van openheid en bij draagkracht, cultuur, leeftijd, spiritualiteit en sociale situatie van patiënt en naasten.'+c(1) },
       { h:'Welke onderwerpen komen aan bod?', p:'Afhankelijk van de situatie en de wensen van de patiënt onder meer: levensbeschouwing en culturele achtergrond, (niet-)behandelafspraken, saneren van medicatie, ziekenhuisopnames, plaats van zorg en sterven, crisissituaties, wilsverklaring, wettelijke vertegenwoordiging, levenseindebeslissingen en nazorg voor nabestaanden.'+c(1) },
-      { h:'Samen beslissen en het proactief zorgplan', p:'Samen beslissen is het proces waarin zorgprofessional en patiënt gezamenlijk bespreken welke zorg het beste bij de patiënt past; het vormt het fundament voor proactieve zorgplanning.'+c(2)+c(3)+' De uitkomsten worden vastgelegd in het proactief zorgplan: de dynamische set van afspraken van patiënt en zorgprofessionals over zorg en zelfmanagement. Elke patiënt in de palliatieve fase heeft zo mogelijk een proactief zorgplan, dat wordt gedeeld, geactualiseerd en gemonitord en bij voorkeur digitaal voor alle betrokkenen beschikbaar is.'+c(2)+c(4) },
+      { h:'Samen beslissen en het proactief zorgplan', p:'Samen beslissen is het proces waarin de zorgprofessional en de patiënt gezamenlijk bespreken welke zorg het beste bij de patiënt past, waarbij alle opties, voor- en nadelen, voorkeuren en omstandigheden van de patiënt worden meegenomen.'+c(7)+' Samen beslissen vormt het fundament voor proactieve zorgplanning; de uitkomsten worden vastgelegd in het proactief zorgplan.'+c(3)+' Het proactief zorgplan is de dynamische set van afspraken van de patiënt en de zorgprofessional(s) over zorg én zelfmanagement. Deze afspraken zijn gebaseerd op de individuele waarden, wensen en behoeften en situatie van de patiënt. Deze afspraken komen in gezamenlijke besluitvorming tot stand. Het proactief zorgplan vormt de weerslag van het proces van proactieve zorgplanning.'+c(8)+' Elke patiënt in de palliatieve fase heeft zo mogelijk een proactief zorgplan, dat wordt gedeeld, geactualiseerd en gemonitord en bij voorkeur digitaal voor alle betrokkenen beschikbaar is.'+c(2)+c(4) },
       { h:'Waarom is proactieve zorgplanning belangrijk?', p:'Het versterkt de autonomie van de patiënt en de kwaliteit van samen beslissen. Het bevordert het welbevinden van de patiënt en de tevredenheid van naasten, en draagt bij aan passende zorg en een doelmatiger gezondheidssysteem.'+c(1) }
     ],
-    bronnen: [ KK('5.3 Proactieve zorgplanning, p. 29-31'), KK('Begrippenkader (Proactieve zorgplanning, Proactief zorgplan, Samen beslissen), p. 57-70'), KK('5.2 Samen beslissen, p. 27-28'), KK('5.4 Proactief zorgplan, p. 31-33'), { title:'Palliaweb - Richtlijn Proactieve zorgplanning', url:'https://palliaweb.nl/richtlijnen-palliatieve-zorg/richtlijn/proactieve-zorgplanning' } ]
+    bronnen: [ KK('5.3 Proactieve zorgplanning, p. 29-31'), KK('Begrippenkader (Proactieve zorgplanning, Proactief zorgplan, Samen beslissen), p. 57-70'), KK('5.2 Samen beslissen, p. 27-28'), KK('5.4 Proactief zorgplan, p. 31-33'), { title:'Palliaweb - Richtlijn Proactieve zorgplanning', url:'https://palliaweb.nl/richtlijnen-palliatieve-zorg/richtlijn/proactieve-zorgplanning' }, KK('Begrippenkader, Proactieve zorgplanning, p. 65'), KK('Begrippenkader, Samen beslissen, p. 66'), KK('Begrippenkader, Proactief zorgplan, p. 65') ]
   },
   3: {
     paragrafen: [
-      { h:'Wat is coördinatie en continuïteit van zorg?', p:'Goede palliatieve zorg vraagt coördinatie en continuïteit, en met kennis van zaken vooruit plannen en organiseren. Rond de patiënt en de naasten wordt een multidisciplinair en/of transmuraal team gevormd dat waarborgt dat zorg op ieder moment beschikbaar is; noodzakelijke transfers verlopen naadloos.'+c(1)+' Continuïteit omvat ten minste persoonlijke continuïteit (een vaste zorgprofessional in iedere zorgsetting die de patiënt kent en volgt), teamcontinuïteit (informatie-uitwisseling en samenwerking binnen één zorgsetting) en transmurale continuïteit (informatie-uitwisseling en samenwerking tussen zorgsettings).'+c(2) },
-      { h:'Wat doet de centrale zorgverlener?', p:'Voor elke patiënt wordt één eerstverantwoordelijke aangewezen: de centrale zorgverlener, het eerste aanspreekpunt voor de patiënt, de naasten en het hele team. Dit is in principe een BIG-geregistreerde zorgprofessional. De taken worden, in samenspraak met patiënt en naasten, uitgevoerd door de hoofdbehandelaar of gedelegeerd aan een andere zorgprofessional; als de situatie of de plaats van zorg verandert, kan de rol wisselen. De centrale zorgverlener ziet er onder meer op toe dat eigen regie wordt gestimuleerd, het proactief zorgplan tot stand komt en wordt bijgesteld, de taakverdeling helder is, continuïteit is geregeld, overleg, consultaties en verwijzingen worden geregeld, en er aandacht is voor mantelzorgers en vrijwilligers.'+c(1)+c(2)+WA_NOOT },
-      { h:'En de hoofdbehandelaar?', p:'De hoofdbehandelaar is de arts, verpleegkundig specialist of physician assistant die inhoudelijk verantwoordelijk is voor de palliatieve zorgverlening (diagnostiek, behandeling en continuïteit van zorg). Wie deze rol vervult, kan gedurende het ziekteproces wisselen. In afwachting van de nadere duiding van het begrip regiebehandelaar houdt het kwaliteitskader de termen hoofdbehandelaar en centrale zorgverlener aan.'+c(2)+c(3) },
+      { h:'Wat is coördinatie en continuïteit van zorg?', p:'Goede palliatieve zorg vraagt coördinatie en continuïteit, en met kennis van zaken vooruit plannen en organiseren. Rond de patiënt en de naasten wordt een multidisciplinair en/of transmuraal team gevormd dat waarborgt dat zorg op ieder moment beschikbaar is; noodzakelijke transfers verlopen naadloos.'+c(1)+' Bij continuïteit van zorg is er sprake van een ononderbroken samenhang van alle elementen waaruit het gehele zorgproces is opgebouwd. Continuïteit omvat ten minste:<ol class="bb-lijst"><li>persoonlijke continuïteit: een vaste zorgprofessional in iedere afzonderlijke zorgsetting die de patiënt kent en volgt</li><li>teamcontinuïteit: communicatie van relevante patiënteninformatie en samenwerking tussen zorgprofessionals binnen één zorgsetting om op die manier de zorg op elkaar te laten aansluiten</li><li>transmurale continuïteit: communicatie van relevante patiënteninformatie en samenwerking tussen zorgprofessionals uit verschillende zorgsettings om op die manier de zorg op elkaar te laten aansluiten</li></ol>'+c(3) },
+      { h:'Wat doet de centrale zorgverlener?', p:'De centrale zorgverlener is het belangrijkste aanspreekpunt voor de patiënt en diens naasten en voor het gehele team van betrokken professionals. Deze aangewezen eerstverantwoordelijke is in principe een BIG-geregistreerde zorgprofessional met concrete taken en verantwoordelijkheden op het gebied van palliatieve zorgverlening, coördinatie en continuïteit van de zorg. In samenspraak met de patiënt en diens naasten worden de taken van de centrale zorgverlener uitgevoerd door de hoofdbehandelaar, dan wel gedelegeerd aan een ander teamlid. Afhankelijk van de verblijfplaats van de patiënt en de omstandigheden kan deze rol in sommige gevallen worden ingevuld door een verzorgende.'+c(4)+' De centrale zorgverlener ziet er onder meer op toe dat eigen regie wordt gestimuleerd, het proactief zorgplan tot stand komt en wordt bijgesteld, de taakverdeling helder is, continuïteit is geregeld, overleg, consultaties en verwijzingen worden geregeld, en er aandacht is voor mantelzorgers en vrijwilligers.'+c(1)+WA_NOOT },
+      { h:'En de hoofdbehandelaar?', p:'De hoofdbehandelaar is de arts, verpleegkundig specialist of physician assistant die inhoudelijk verantwoordelijk is voor de palliatieve zorgverlening (diagnostiek, behandeling en continuïteit van zorg) aan de patiënt. Wie deze rol vervult, kan gedurende het ziekteproces wisselen.'+c(5)+' In afwachting van de nadere duiding van het begrip regiebehandelaar houdt het kwaliteitskader de termen hoofdbehandelaar en centrale zorgverlener aan.'+c(2) },
       { h:'Waaraan moet de zorg voldoen?', p:'Onder meer: het is duidelijk wie de hoofdbehandelaar en wie de centrale zorgverlener is en hoe die te bereiken is; er wordt een proactief zorgplan gebruikt; continuïteit van zorg is 24/7 gewaarborgd, ongeacht de verblijfplaats; er vindt multidisciplinair overleg plaats en zorgprofessionals werken interdisciplinair samen; bij overdracht wordt de centrale zorgverlener geïnformeerd; er zijn gespecialiseerde teams palliatieve zorg beschikbaar; en waar nodig worden vrijwilligers en het sociaal domein ingezet.'+c(1) },
       { h:'Het proactief zorgplan als kompas', p:'Het proactief zorgplan is het centrale kompas voor patiënt, naasten, professionals en vrijwilligers: een eenduidig en altijd toegankelijk overzicht van de afspraken, juist ook tijdens crisissituaties, in avond, nacht en weekend en in de stervensfase. Het is daarom bij voorkeur elektronisch beschikbaar; anders ligt er een actueel papieren exemplaar bij de patiënt.'+c(1) }
     ],
-    bronnen: [ KK('5.5 Coördinatie en continuïteit, p. 33-34'), KK('Begrippenkader (Continuïteit van zorg, Centrale zorgverlener, Hoofdbehandelaar), p. 57-70'), KK('Inleiding (Hoofdbehandelaar en centrale zorgverlener), p. 8') ]
+    bronnen: [ KK('5.5 Coördinatie en continuïteit, p. 33-34'), KK('Inleiding (Hoofdbehandelaar en centrale zorgverlener), p. 8'), KK('Begrippenkader, Continuïteit van zorg, p. 58'), KK('Begrippenkader, Centrale zorgverlener, p. 57'), KK('Begrippenkader, Hoofdbehandelaar, p. 60') ]
   },
   4: {
     paragrafen: [
-      { h:'Wat is complexe casuïstiek?', p:'Complexe casuïstiek verwijst naar situaties waarin de problematiek van een patiënt meerdere dimensies tegelijk raakt (fysiek, psychisch, sociaal, spiritueel/zingeving), of waarin de geboden zorg onvoldoende effect heeft. Voorbeelden zijn symptomen die ondanks behandeling volgens richtlijnen onvoldoende verbeteren, symptomen die weinig voorkomen, problemen in meerdere dimensies tegelijk, en complexe behandel- of ethische beslissingen rond het levenseinde of de proportionaliteit van behandeling.'+c(2) },
-      { h:'Wat is consultatie?', p:'Consultatie is de mogelijkheid voor een zorgverlener om advies en ondersteuning te vragen aan een zorgverlener of multidisciplinair team met specialistische kennis op het gebied van palliatieve zorg. Dat kan mondeling of schriftelijk, en kan gaan over medisch-inhoudelijke, verpleegkundige, psychische, sociale en zingevingsvraagstukken. Consultatie kan plaatsvinden zonder dat de consulent contact heeft gehad met de patiënt (telefonisch, digitaal, PaTz) of met contact met de patiënt en de naasten.'+c(2) },
+      { h:'Wat is complexe casuïstiek?', p:'Complexe casuïstiek verwijst naar situaties waarin problematiek van een patiënt meerdere dimensies tegelijk raakt (fysiek, psychisch, sociaal, spiritueel/zingeving) of naar situaties waarin de inzet van de geboden zorg onvoldoende effect heeft gesorteerd. Voorbeelden zijn:<ul class="bb-lijst"><li>Symptomen die ondanks behandeling volgens richtlijnen onvoldoende verbeteren.</li><li>Symptomen die weinig voorkomen.</li><li>Patiënten met problemen in meerdere dimensies (bijvoorbeeld pijn én psychische onrust).</li><li>Complexe behandel- of ethische beslissingen rond het levenseinde (zoals stoppen met eten en drinken) of proportionaliteit van behandeling.</li><li>Situaties waarbij moeizame communicatie, weerstand of culturele barrières worden ervaren.</li></ul>'+c(5) },
+      { h:'Wat is consultatie?', p:'Consultatie is de mogelijkheid voor een zorgverlener om advies en ondersteuning te vragen aan een zorgverlener of multidisciplinair team met specialistische kennis op het gebied van palliatieve zorg. Dit kan zowel mondeling als schriftelijk gebeuren en kan betrekking hebben op medisch-inhoudelijke, verpleegkundige, psychische, sociale en zingevingsvraagstukken. De consultatie kan plaatsvinden zonder dat er contact is geweest tussen de patiënt en de consulent (telefonische, digitale consultatie, PaTz) en er bestaat consultatie waarbij de consulent contact heeft gehad met de patiënt (en diens naasten).'+c(6) },
       { h:'Wanneer en hoe wordt consultatie ingeschakeld?', p:'Als de problematiek van de patiënt complex is en de deskundigheid of ervaring van de betrokken zorgprofessionals overstijgt, kan een in palliatieve zorg gespecialiseerde zorgverlener worden geconsulteerd. Meestal gebeurt dat als intercollegiale consultatie. Daarnaast kan dag en nacht contact worden opgenomen met het Consultatieteam palliatieve zorg in de regio. Voor de kwaliteit en toegankelijkheid van transmurale consultatie wordt een Kader transmurale consultatie palliatieve zorg ontwikkeld.'+c(1) },
-      { h:'Wie zijn in palliatieve zorg gespecialiseerde zorgprofessionals?', p:'Zij zijn met een erkende opleiding in palliatieve zorg gekwalificeerd en hebben specifieke kennis en vaardigheden in de meer complexe palliatieve zorg. Een gespecialiseerd team palliatieve zorg is multidisciplinair samengesteld op basis van de vier dimensies en werkt interdisciplinair samen.'+c(2)+' Zij geven ook scholing aan andere zorgprofessionals, bijvoorbeeld bedside-onderwijs en discipline-overstijgend onderwijs.'+c(3) },
-      { h:'Hoe werkt het consultatieteam in de praktijk?', p:'Telefonische consultatie is landelijk 24/7 bereikbaar via één centraal nummer. Een verpleegkundig consulent en een arts-consulent stellen samen een advies op, gebaseerd op landelijke richtlijnen, en bevestigen dit schriftelijk.'+c(4) },
-      { h:'Waarom is consultatie belangrijk?', p:'Elke zorgprofessional hoort de eigen kwaliteiten en beperkingen te kennen en op basis daarvan tijdig gespecialiseerde palliatieve zorg in te schakelen, om deskundigheid toe te voegen en de effectiviteit van de zorg te vergroten.'+c(3)+' Het kwaliteitskader beveelt aan dat gespecialiseerde deskundigheid bij complexe casuïstiek altijd beschikbaar is.'+c(5) }
+      { h:'Wie zijn in palliatieve zorg gespecialiseerde zorgprofessionals?', p:'De in palliatieve zorg gespecialiseerde zorgprofessional is met een erkende opleiding in palliatieve zorg gekwalificeerd en heeft specifieke kennis en vaardigheden in de meer complexe palliatieve zorg. Veelal is de in palliatieve zorg gespecialiseerde zorgprofessional, vanuit diens functie werkzaam in een vakgebied waar palliatieve zorg frequent deel uitmaakt van de dagelijkse praktijk, maar niet de belangrijkste focus is. De in palliatieve zorg gespecialiseerde zorgprofessional is bij voorkeur ingebed in een gespecialiseerd team palliatieve zorg. Een gespecialiseerd team palliatieve zorg is een team van in palliatieve zorg gespecialiseerde zorgprofessionals dat multidisciplinair is samengesteld (op basis van de vier dimensies van palliatieve zorg) en interdisciplinair samenwerkt.'+c(7)+' Het kwaliteitskader verwijst voor hun opleiding, ervaring en vaardigheden naar de profielen van de beroepsverenigingen; zie <a href="#" onclick="goTo({tab:\'kaders\'});return false">Kaders en bronnen</a>.'+c(2)+' Zij geven ook scholing aan andere zorgprofessionals, bijvoorbeeld bedside-onderwijs en discipline-overstijgend onderwijs.'+c(2) },
+      { h:'Hoe werkt het consultatieteam in de praktijk?', p:'Telefonische consultatie is landelijk 24/7 bereikbaar via één centraal nummer. Een verpleegkundig consulent en een arts-consulent stellen samen een advies op, gebaseerd op landelijke richtlijnen, en bevestigen dit schriftelijk.'+c(3) },
+      { h:'Waarom is consultatie belangrijk?', p:'Elke zorgprofessional hoort de eigen kwaliteiten en beperkingen te kennen en op basis daarvan tijdig gespecialiseerde palliatieve zorg in te schakelen, om deskundigheid toe te voegen en de effectiviteit van de zorg te vergroten.'+c(2)+' Het kwaliteitskader beveelt aan dat gespecialiseerde deskundigheid bij complexe casuïstiek altijd beschikbaar is.'+c(4) }
     ],
-    bronnen: [ KK('Inleiding (Consultatie bij complexe casuïstiek), p. 8'), KK('Begrippenkader (Complexe casuïstiek, Consultatie, Gespecialiseerde zorgprofessional), p. 57-70'), KK('6.1 Deskundigheid, p. 43-44'), { title:'Palliaweb - Consultatie (Het consultatieteam)', url:'https://palliaweb.nl/zorgpraktijk/consultatie' }, KK('8 Aanbevelingen, p. 54-55') ]
+    bronnen: [ KK('Inleiding (Consultatie bij complexe casuïstiek), p. 8'), KK('6.1 Deskundigheid, p. 43-44'), { title:'Palliaweb - Consultatie (Het consultatieteam)', url:'https://palliaweb.nl/zorgpraktijk/consultatie' }, KK('8 Aanbevelingen, p. 54-55'), KK('Begrippenkader, Complexe casuïstiek, p. 58'), KK('Begrippenkader, Consultatie, p. 57'), KK('Begrippenkader, Gespecialiseerde zorgprofessional en gespecialiseerd team, p. 60') ]
   }
 };
 
@@ -1030,7 +1041,7 @@ function showInfoPopover(btn){
   if (su) pop.innerHTML = `<div class="info-pop-h">${su.h}</div><div class="info-pop-txt">${su.p}</div><a href="#" class="info-pop-link" onclick="closeInfoPopover(); goTo({tab:'toepassen'}); return false;">Meer uitleg: Hoe pas je de informatie uit het Leerkompas toe? →</a>`;
   else {
   const cleanP = entry.p.replace(/<sup class="cite">\[\d+\]<\/sup>/g, '');
-  pop.innerHTML = `<div class="info-pop-h">${entry.h}</div><div class="info-pop-txt">${cleanP}</div><div class="info-pop-vl">Voorlopige tekst, wordt nog herzien</div><a href="#" class="info-pop-link" onclick="jumpToBasisbegrip(${entry.themaIdx}); return false;">Bekijk met bronvermelding in Informatie, praktijktools en werkvormen →</a>`;
+  pop.innerHTML = `<div class="info-pop-h">${entry.h}</div><div class="info-pop-txt">${cleanP}</div><a href="#" class="info-pop-link" onclick="jumpToBasisbegrip(${entry.themaIdx}); return false;">Bekijk met bronvermelding in Informatie, praktijktools en werkvormen →</a>`;
   }
   const r = btn.getBoundingClientRect();
   pop.style.top = Math.min(r.bottom + 6, window.innerHeight - 20) + 'px';
@@ -1162,7 +1173,7 @@ const PRAKTIJKTOOLS_CONTENT = {
 };
 
 /* ===================== VERSIE & WIJZIGINGEN ===================== */
-const VERSIE = '2026-10-16';
+const VERSIE = '2026-10-19';
 const V = '2026-10-05';
 // Inzendingen van materialen: vul hier het e-mailadres en/of een online formulier (bijv. Microsoft Forms) in.
 const INZEND = { email:'lonneke.van.leeuwen@tpz-midden.nl', formUrl:'' };
@@ -1191,7 +1202,7 @@ function themaLabel(k){ return THEMAS[k] ? THEMAS[k].label : String(k); }
 const THEMA_INTRO = {
   com:'Goede palliatieve zorg staat of valt met communicatie: met patiënten en naasten (slecht nieuws, markering, wensen en grenzen, hoop) én tussen zorgverleners (overdracht, afstemming, consultatie). Op deze pagina staan hulpmiddelen, oefenvormen, leeraanbod en podcasts die helpen om die gesprekken te leren voeren. Veel materiaal bij <a href="#" onclick="goTo({tab:\'kennis\',thema:2});return false">Proactieve zorgplanning</a> is ook hier bruikbaar.',
   trans:'Jongeren met een levensduurverkortende of levensbedreigende aandoening stappen rond hun achttiende over van kinderzorg naar volwassenenzorg. Dat vraagt om tijdige voorbereiding, een warme overdracht en zorgverleners in de volwassenenzorg die weten wat deze jongeren en hun gezin nodig hebben. Deze pagina is nog in opbouw: het Kenniscentrum Kinderpalliatieve Zorg heeft e-learnings over dit onderwerp aangekondigd; zodra die beschikbaar zijn worden ze hier opgenomen.',
-  pn:'Ervaringsverhalen van patiënten en naasten laten zien wat palliatieve zorg voor hen betekent. Je zet ze in om inspiratie, erkenning en herkenning op te halen en om het gesprek over kwaliteit van leven en sterven op gang te brengen: als opening van een scholing, in een teamoverleg of als start van een reflectie.',
+  pn:'Ervaringsverhalen van patiënten en naasten laten zien wat palliatieve zorg voor hen betekent. Je zet ze in om inspiratie, erkenning en herkenning op te halen en om het gesprek over palliatieve zorg, en kwaliteit van leven en sterven op gang te brengen: als opening van een scholing, in een teamoverleg of als start van een reflectie.',
   leren:'Deskundigheidsbevordering is meer dan scholing. Een groot deel van het leren gebeurt tijdens het werk, in contact met collega\'s en door terug te kijken op het eigen handelen. Onderstaande indeling helpt om te zien welke vormen van leren je organisatie al gebruikt en welke je bewuster kunt inzetten voor palliatieve zorg.'
 };
 
@@ -1208,7 +1219,7 @@ const LEERVORMEN = {
     { titel:'Leren door reflectie op het werk', en:'Learning through reflection on work', uitleg:'Terugkijken op het eigen handelen en dat van het team.',
       items:[['Reflectiegesprek','Reflective discussion'],['Evaluatiegesprek','Evaluative discussion']] }
   ],
-  rest:'Niet alles past in een categorie; de oorspronkelijke indeling kent daarom ook de restcategorie "niet in te delen" (not classifiable).',
+  rest:'',
   lit:[
     'Rogers, A. (2014). The base of the iceberg: Informal learning and its impact on formal and non-formal learning. Verlag Barbara Budrich.',
     'Berings, M. G. M. C. (2006). On-the-job learning styles: Conceptualization and instrument development for the nursing profession [proefschrift, Tilburg University].',
@@ -1535,13 +1546,28 @@ const PAGINAS = {
 let huidigeTab = 'home';
 function showTab(name, keepScroll){
   if(name!=='bronnen') bronTerug = null;
+  if(navTerugNieuw) navTerugNieuw = false; else navTerug = null;
+  if(navTerug && navTerug.tab===name && name!=='kennis') navTerug = null;
   huidigeTab = name;
   const tb = document.getElementById('bl-terugbalk'); if(tb){ tb.hidden = !(name==='bronnen' && bronTerug); if(!tb.hidden) document.getElementById('bl-terug-naar').textContent = 'Je kwam van: ' + bronTerug.naam; }
   if(name!=='bronnen') document.querySelectorAll('.bl-rij.mark').forEach(x=> x.classList.remove('mark'));
   TABS.forEach(n=> document.getElementById('tab-'+n).classList.toggle('on', n===name));
   renderKruimel();
+  toonNavTerug();
   if(!keepScroll) window.scrollTo(0,0);
 }
+/* terug naar waar je was na een interne link in de tekst (bijv. van het kwaliteitskader naar Borgen of het leeraanbod) */
+var navTerug = null, navTerugNieuw = false;
+function paginaNaam(){ return huidigeTab==='kennis' && THEMAS[knState.thema] ? THEMAS[knState.thema].label : (PAGINAS[huidigeTab] ? PAGINAS[huidigeTab].t.replace(/\u00ad/g,'') : 'de voorpagina'); }
+function toonNavTerug(){ const b = document.getElementById('nav-terugbalk'); if(!b) return; b.hidden = !navTerug; if(navTerug) document.getElementById('nav-terug-naar').textContent = 'Je kwam van: ' + navTerug.naam; }
+function terugNaarVorige(){ const v = navTerug; if(!v) return; navTerug = null; if(v.tab==='kennis') goTo({tab:'kennis', thema:v.thema}); else showTab(v.tab, true); window.scrollTo({ top:v.y, behavior:'instant' }); }
+document.addEventListener('click', (e)=>{
+  const a = e.target.closest && e.target.closest('a[onclick],button[onclick]');
+  if(!a || !a.closest('.tabpane') || a.closest('#tab-home')) return;
+  const oc = a.getAttribute('onclick')||'';
+  if(!/goTo\(|showTab\(/.test(oc) || /showTab\('home'\)/.test(oc)) return;
+  navTerug = { tab:huidigeTab, thema:knState.thema, y:window.scrollY, naam:paginaNaam() }; navTerugNieuw = true;
+}, true);
 function goTo(o){
   if(o.thema!==undefined){ knState.thema = o.thema; renderKn(); }
   showTab(o.tab);
@@ -1554,7 +1580,7 @@ function renderKruimel(){
   const k = document.getElementById('kruimel');
   if(huidigeTab==='home'){ k.hidden = true; return; }
   k.hidden = false;
-  let h = `<button class="kr-terug" onclick="showTab('home')">‹ Inhoud</button><span class="kr-pagina">${PAGINAS[huidigeTab].t}</span>`;
+  let h = `<button class="kr-terug" onclick="showTab('home')">‹ Inhoud</button>${huidigeTab==='kennis' && THEMAS[knState.thema] && THEMAS[knState.thema].groep==='algemeen' ? '' : `<span class="kr-pagina">${PAGINAS[huidigeTab].t}</span>`}`;
   if(huidigeTab==='kennis'){
     const opt = (g)=> Object.keys(THEMAS).filter(x=> THEMAS[x].groep===g).map(x=> `<option value="${x}" ${String(knState.thema)===x?'selected':''}>${THEMAS[x].label}</option>`).join('');
     h += `<label class="kr-kies">Onderwerp <select onchange="goTo({tab:'kennis',thema:isNaN(this.value)?this.value:Number(this.value)})"><optgroup label="Algemeen">${opt('algemeen')}</optgroup><optgroup label="Kernelementen">${opt('kern')}</optgroup><optgroup label="Thema's">${opt('thema')}</optgroup></select></label>`;
@@ -1703,10 +1729,6 @@ function buildKnBasisbegrippen(key, num){
   const content = BASISBEGRIPPEN_CONTENT[key];
   const body = document.createElement('div');
   const idPrefix = 'kn-bron-' + key + '-';
-  const ban = document.createElement('div');
-  ban.className = 'vl-banner';
-  ban.innerHTML = '<b>Voorlopige tekst.</b> Deze tekst is op 5 oktober 2026 afgestemd op het Kwaliteitskader palliatieve zorg Nederland, editie 2 (2026). Aan de definitieve basisbegrippen wordt nog gewerkt; formuleringen en bronverwijzingen kunnen veranderen. Gebruik deze tekst daarom nog niet in eigen materiaal zonder dat te vermelden.';
-  body.appendChild(ban);
   const txt = document.createElement('div');
   txt.className = 'vl-tekst';
   content.paragrafen.forEach(par=>{
@@ -1720,7 +1742,7 @@ function buildKnBasisbegrippen(key, num){
     if(par.img){ const w = document.createElement('div'); w.innerHTML = par.img; txt.appendChild(w); }
   });
   body.appendChild(txt);
-  return makeSecCard('s1 vl', num, 'Basisbegrippen <span class="vl-badge">Voorlopig · hier wordt nog aan gewerkt</span>' + (NEW.since && NEW.since<=V ? ' <span class="nw-badge upd">Bijgewerkt · kwaliteitskader 2026</span>' : ''), '', body, key===0 && !NEW.only);
+  return makeSecCard('s1 vl', num, 'Basisbegrippen' + (NEW.since && NEW.since<=V ? ' <span class="nw-badge upd">Bijgewerkt · kwaliteitskader 2026</span>' : ''), '', body, key===0 && !NEW.only);
 }
 
 function buildLeervormen(){
@@ -1728,7 +1750,7 @@ function buildLeervormen(){
   body.innerHTML = `<div class="lv-grid">` + LEERVORMEN.cats.map((c,i)=>`
     <div class="lv-card lv${i+1}"><div class="lv-ttl">${c.titel}</div><div class="lv-en">${c.en}</div><div class="lv-uitleg">${c.uitleg}</div>
       <ul>${c.items.map(x=>`<li title="${esc(x[1])}">${x[0]}</li>`).join('')}</ul></div>`).join('') + `</div>
-    <div class="lv-rest">${LEERVORMEN.rest}</div>
+    ${LEERVORMEN.rest ? `<div class="lv-rest">${LEERVORMEN.rest}</div>` : ''}
     <div class="thema-intro" style="margin:12px 0 0;max-width:none"><b>Ook te overwegen.</b> NPPZ noemt naast scholing nog een aantal vormen die niet in deze indeling staan: casuïstiekbespreking, intervisie en supervisie, storytelling, microlearning of een kennisquiz, visitatie en het delen van goede voorbeelden. Binnen de organisatie kan kennis ook worden gedeeld via aandachtsvelders, het teamoverleg, de overdracht en door het palliatief team meer bekendheid te geven. Het advies is om te beginnen met laagdrempelige activiteiten die snel effect hebben.${citeLink(BRONKEY.nppz)}</div>
     <div class="stat-box" style="margin-top:12px"><p style="font-size:12px"><b>Zo gebruik je de indeling.</b> Loop de vier categorieën langs: wat gebeurt al in je organisatie op het gebied van palliatieve zorg? Welke andere vormen van leren zijn nog onderbenut? De vormen onder de laatste drie categorieën kosten weinig extra tijd en zijn vaak al aanwezig. Heeft jouw organisatie een goed voorbeeld? <a href="#" onclick="goTo({tab:'regio'});return false" style="color:var(--dk);font-weight:700">Deel het via Uit de regio</a>.</p></div>
     <div class="bronkort" style="margin-top:12px">Bron van deze indeling: Liesbeth Knol (Hogeschool Utrecht) ${citeLink(BRONKEY.leervormen)}</div>`;
@@ -1840,7 +1862,7 @@ function renderKnPackage(){
     wrap.appendChild(e);
   }
 }
-function renderKn(){ renderKnPackage(); if(typeof huidigeTab!=='undefined') renderKruimel(); }
+function renderKn(){ renderKnPackage(); { const k = document.querySelectorAll('#kn-main-wrap .sec-card'); if(k.length===1){ const n = k[0].querySelector('.num'); if(n) n.remove(); } } if(typeof huidigeTab!=='undefined') renderKruimel(); }
 
 /* ===================== TAB: LEERAANBOD ===================== */
 const DUUR = { kort:{ label:'Eenmalig of kortdurend', sub:'1-2 dagen of bijeenkomsten' }, leergang:{ label:'Leergang', sub:'3-10 dagen of bijeenkomsten' }, opleiding:{ label:'Opleiding', sub:'meer dan 10 dagen of bijeenkomsten' } };
@@ -2189,7 +2211,6 @@ function bronA(b){ return (b.url && b.url.startsWith('http')) ? `<a href="${b.ur
   const ALG = 'Algemene bronnen van het Leerkompas';
   regBron(ALG, KKA);
   regBron(ALG, 'Regionale werkafspraken palliatieve zorg Midden-Nederland (augustus 2026)');
-  regBron(ALG, 'Toolbox Deskundigheidsbevordering, TPZ Midden-Nederland (versie 11-6-2026)');
   regBron(ALG, '<a href="https://palliaweb.nl/" target="_blank" rel="noopener">Palliaweb</a>');
   /* over de transformatie: lijst uit de pagina overnemen */
   const intro = document.querySelector('#tab-intro .bronlist');
@@ -2208,12 +2229,11 @@ function bronA(b){ return (b.url && b.url.startsWith('http')) ? `<a href="${b.ur
   /* vormen van leren */
   BRONKEY.leervormen = regBron(THEMAS.leren.label, LEERVORMEN.bron + '<ul>' + LEERVORMEN.lit.map(l=>`<li>${l}</li>`).join('') + '</ul>');
   /* leeraanbod, borgen, kaders */
-  BRONKEY.leer = regBron(PAGINAS.leer.t, "Leeraanbod Palliatieve Zorg per doelgroep en onderwijsvorm, Toolbox Deskundigheidsbevordering Palliatieve Zorg, TPZ Midden-Nederland (versie 18-9-2026), aangevuld met scholingen uit de Toolbox van 11-6-2026 die niet in die tabel staan en dus niet naar niveau of rol zijn ingedeeld (onder \"Overig\"). Omschrijvingen en detailgegevens komen uit de Toolbox van 11-6-2026.");
+  BRONKEY.leer = regBron(PAGINAS.leer.t, '<a href="https://palliaweb.nl/opleidingen" target="_blank" rel="noopener">Palliaweb: opleidingen palliatieve zorg</a>');
   BRONKEY.borg = regBron(PAGINAS.borg.t, 'Verkenning met de expertgroep deskundigheidsbevordering (13-4-2026) naar de vraag waaraan je in een zorgorganisatie een duurzaam geborgd deskundigheidssysteem palliatieve zorg herkent en hoe je daaraan bouwt. Verwerkt in &quot;Verwerking input beoogd deskundigheidssysteem&quot; (Lonneke van Leeuwen, 28-4-2026). De inzichten zijn nog niet aangevuld vanuit bestuurskundige of organisatiewetenschappelijke literatuur.');
   BRONKEY.borgaj = regBron(PAGINAS.borg.t, 'Verkenning met transformatieaanjagers (22-4-2026)');
   BRONKEY.nppz = regBron(PAGINAS.borg.t, '<a href="https://nppz.org/kwaliteitskader-palliatieve-zorg/tips-voor-deskundigheidsbevordering-in-de-palliatieve-zorg/" target="_blank" rel="noopener">Tips voor deskundigheidsbevordering in de palliatieve zorg (NPPZ)</a>');
   BRONKEY.ze = regBron(PAGINAS.borg.t, '<a href="https://palliaweb.nl/getmedia/5efb1240-7ef9-40b4-ad17-4f0aa73b9ecf/2026-Vragenlijsten-zelfevaluatie.pdf" target="_blank" rel="noopener">Zelfevaluatie palliatieve zorg voor zorgorganisaties, vragenlijsten (Stichting PZNL, 2026)</a>');
-  BRONKEY.kaders = regBron(PAGINAS.kaders.t, "Overgenomen uit de pagina Bronnen en kaders van de Toolbox Deskundigheidsbevordering (11-6-2026); de verwijzing naar het kwaliteitskader is bijgewerkt naar editie 2.");
   document.querySelectorAll('[data-citeref]').forEach(el=>{ el.innerHTML = citeLink(BRONKEY[el.dataset.citeref]); });
   /* pagina opbouwen */
   let h = '', g = null;
@@ -2296,7 +2316,7 @@ function zkBouw(){
   leerState = leerWas; renderLeerResult();
   const themaWas = knState.thema;
   Object.keys(THEMAS).forEach(k=>{ const key = isNaN(k)? k : Number(k); knState.thema = key; renderKnPackage(); voeg('kennis', key, THEMAS[k].label, document.getElementById('kn-main-wrap')); });
-  knState.thema = themaWas; renderKnPackage();
+  knState.thema = themaWas; renderKn();
   return idx;
 }
 function zkWoorden(q){ return norm(q).trim().split(/\s+/).filter(w=> w.length>=2); }
