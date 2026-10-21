@@ -268,6 +268,13 @@ a.cite:hover{background:var(--grijs2)}
 .lv-uitleg{font-size:11.5px;color:var(--txt2);margin-bottom:6px}
 .lv-card ul{margin-left:16px;font-size:12px;line-height:1.6;color:var(--txt)}
 .lv-rest{font-size:11px;color:var(--txt2);font-style:italic;margin-top:8px}
+.lv-spellen{margin-top:14px;background:var(--wit);border:1px solid var(--grijs);border-radius:var(--rs);padding:12px 14px}
+.lv-sp-kop{font-weight:800;color:var(--dk);font-size:13px;margin-bottom:3px}
+.lv-sp-int{font-size:12px;color:var(--txt2);margin-bottom:6px}
+.lv-sp-lijst{margin:0 0 0 18px;font-size:12.5px;line-height:1.55}
+.lv-sp-lijst li{margin-bottom:5px}
+.lv-sp-lijst a{color:var(--dk);font-weight:700}
+.lv-sp-lijst span{display:block;color:var(--txt2);font-size:12px}
 /* uit de regio */
 .oproep{background:linear-gradient(135deg,#f3f7ea,#fbf8e6);border:1px solid var(--sec1-bd);border-radius:var(--r);padding:16px 20px;margin-bottom:18px}
 .oproep h3{font-size:14px;color:var(--dk);margin-bottom:6px}
@@ -643,7 +650,7 @@ a.cite:hover{background:var(--grijs2)}
         <span class="toepas-ic">💬</span>
         <div class="toepas-ttl">Inspiratie &amp; reflectie</div>
         <div class="toepas-txt">Om inspiratie, erkenning en herkenning op te halen, en het gesprek over palliatieve zorg, en kwaliteit van leven en sterven op gang te brengen.</div>
-        <div class="toepas-vb"><b>Bijvoorbeeld:</b> ervaringsverhalen van patiënten en naasten, De reis van Esther, moreel beraad, podcasts en spellen.</div>
+        <div class="toepas-vb"><b>Bijvoorbeeld:</b> ervaringsverhalen van patiënten en naasten, De reis van Esther, moreel beraad, podcasts en <a href="#" onclick="goTo({tab:'kennis',thema:'leren'}); setTimeout(()=>{ const e=document.getElementById('lv-spellen'); if(e) e.scrollIntoView({block:'start',behavior:'smooth'}); },60); return false" style="color:var(--dk);font-weight:700">spellen</a>.</div>
       </div>
       <div class="toepas-card tp6">
         <span class="toepas-ic">🌱</span>
@@ -997,6 +1004,7 @@ const BASISBEGRIPPEN_CONTENT = {
   3: {
     paragrafen: [
       { h:'Wat is coördinatie en continuïteit van zorg?', p:'Goede palliatieve zorg vraagt coördinatie en continuïteit, en met kennis van zaken vooruit plannen en organiseren. Rond de patiënt en de naasten wordt een multidisciplinair en/of transmuraal team gevormd dat waarborgt dat zorg op ieder moment beschikbaar is; noodzakelijke transfers verlopen naadloos.'+c(1)+' Bij continuïteit van zorg is er sprake van een ononderbroken samenhang van alle elementen waaruit het gehele zorgproces is opgebouwd. Continuïteit omvat ten minste:<ol class="bb-lijst"><li>persoonlijke continuïteit: een vaste zorgprofessional in iedere afzonderlijke zorgsetting die de patiënt kent en volgt</li><li>teamcontinuïteit: communicatie van relevante patiënteninformatie en samenwerking tussen zorgprofessionals binnen één zorgsetting om op die manier de zorg op elkaar te laten aansluiten</li><li>transmurale continuïteit: communicatie van relevante patiënteninformatie en samenwerking tussen zorgprofessionals uit verschillende zorgsettings om op die manier de zorg op elkaar te laten aansluiten</li></ol>'+c(2) },
+      { h:'Waarom zijn coördinatie en continuïteit belangrijk?', p:'Naast alles wat het ziekzijn al met zich meebrengt, staat een patiënt met een levensbedreigende aandoening of toenemende kwetsbaarheid met diens naasten voor de opgave om regie te houden over het eigen leven. Een uitdaging hierin wordt gevormd door een complex en gefragmenteerd zorgsysteem, waarin moet worden afgestemd tussen meerdere professionals, diverse zorgsettingen en vele diagnostische en behandelinterventies. Goede kwaliteit van palliatieve zorg vergt daarom coördinatie en continuïteit.'+c(1) },
     ],
     bronnen: [ KK('5.5 Coördinatie en continuïteit, p. 33-34'), KK('Begrippenkader, Continuïteit van zorg, p. 58') ]
   },
@@ -1744,6 +1752,19 @@ function buildKnBasisbegrippen(key, num){
   return makeSecCard('s1 vl', num, 'Basisbegrippen' + (NEW.since && NEW.since<=V ? ' <span class="nw-badge upd">Bijgewerkt · kwaliteitskader 2026</span>' : ''), '', body, key===0 && !NEW.only);
 }
 
+/* spellen en serious games, uit de categorie Spellen van TOOLS_INDEX; spellen zonder link worden niet getoond */
+/* toelichting per spel, gekoppeld aan het begin van de titel */
+const SPEL_UITLEG = [
+  ['Kaartspel Kiezen & Delen bestellen', 'Kaartspel met dilemma&#39;s, stellingen en vragen over leven, ziek zijn en doodgaan, ontwikkeld door het Nationaal Programma Palliatieve Zorg II met KWF. Iedereen kan het spelen.'],
+  ['Overige spellen', 'Overzicht van spellen over palliatieve zorg op Palliaweb.']
+];
+function spelUitleg(titel){ const u = SPEL_UITLEG.find(x=> titel.startsWith(x[0])); return u ? u[1] : ''; }
+function spellenBlok(){
+  const cat = TOOLS_INDEX.find(isSpelCat); if(!cat) return '';
+  const spellen = cat.links.filter(l=> l.url && l.url.startsWith('http') && !/link volgt/i.test(l.title));
+  if(!spellen.length) return '';
+  return `<div class="lv-spellen" id="lv-spellen"><div class="lv-sp-kop">Leren met spellen en serious games</div><div class="lv-sp-int">Spellen kun je inzetten als werkvorm, bijvoorbeeld als opening van een scholing of in een teamoverleg.</div><ul class="lv-sp-lijst">` + spellen.map(l=> `<li><a href="${l.url}" target="_blank" rel="noopener">${l.title}</a>${spelUitleg(l.title) ? `<span>${spelUitleg(l.title)}</span>` : ''}</li>`).join('') + `</ul></div>`;
+}
 function buildLeervormen(){
   const body = document.createElement('div');
   body.innerHTML = `<div class="lv-grid">` + LEERVORMEN.cats.map((c,i)=>`
@@ -1752,6 +1773,7 @@ function buildLeervormen(){
     ${LEERVORMEN.rest ? `<div class="lv-rest">${LEERVORMEN.rest}</div>` : ''}
     <div class="thema-intro" style="margin:12px 0 0;max-width:none"><b>Ook te overwegen.</b> NPPZ noemt naast scholing nog een aantal vormen die niet in deze indeling staan: casuïstiekbespreking, intervisie en supervisie, storytelling, microlearning of een kennisquiz, visitatie en het delen van goede voorbeelden. Binnen de organisatie kan kennis ook worden gedeeld via aandachtsvelders, het teamoverleg, de overdracht en door het palliatief team meer bekendheid te geven. Het advies is om te beginnen met laagdrempelige activiteiten die snel effect hebben.${citeLink(BRONKEY.nppz)}</div>
     <div class="stat-box" style="margin-top:12px"><p style="font-size:12px"><b>Zo gebruik je de indeling.</b> Loop de vier categorieën langs: wat gebeurt al in je organisatie op het gebied van palliatieve zorg? Welke andere vormen van leren zijn nog onderbenut? De vormen onder de laatste drie categorieën kosten weinig extra tijd en zijn vaak al aanwezig. Heeft jouw organisatie een goed voorbeeld? <a href="#" onclick="goTo({tab:'regio'});return false" style="color:var(--dk);font-weight:700">Deel het via Uit de regio</a>.</p></div>
+    ${spellenBlok()}
     <div class="bronkort" style="margin-top:12px">Bron van deze indeling: Liesbeth Knol (Hogeschool Utrecht) ${citeLink(BRONKEY.leervormen)}</div>`;
   // Enige inhoud van de pagina Vormen van leren: daarom direct getoond, zonder uitklapkader.
   body.style.marginTop = '6px';
@@ -1831,7 +1853,7 @@ function renderKnPackage(){
   if(th.groep==='kern'){
     const ov = PRAKTIJKTOOLS_CONTENT[0].items.concat(pod(PODCASTS.filter(p=> p.thema.includes(0) && !p.thema.includes(key))));
     voegSectie(buildItemSectie('s4', nr(), 'Overige praktijktools en werkvormen', ov, 'bekijk materiaal',
-      (body, bronnen)=> NEW.only ? 0 : toolboxCats(body, TOOLS_INDEX.filter(isSpelCat), bronnen), false, 'ov'));
+      null, false, 'ov')); /* spellen staan sinds 21-10-2026 bij Vormen van leren */
   }
 
   // leeraanbod
