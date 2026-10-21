@@ -527,6 +527,28 @@ a.cite:hover{background:var(--grijs2)}
 .aanb-tag{display:block;margin-top:3px;font-size:10px;font-weight:800;color:#7a6c14;text-transform:uppercase;letter-spacing:.04em}
 @media (max-width:640px){ .aanb-grid{grid-template-columns:1fr} }
 
+/* pagina deskundigheidsbevordering in het kwaliteitskader */
+.kk-banner{background:var(--dk);color:#fff;border-radius:var(--r,10px);padding:14px 18px;margin:10px 0 18px;box-shadow:0 2px 8px rgba(42,48,16,.15)}
+.kk-banner .kk-lbl{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:#ffd83d;color:var(--dk2);border-radius:10px;padding:2px 9px;margin-bottom:6px}
+.info-wrap .kk-banner p{color:#fff;font-size:13px;margin:0;line-height:1.6}
+.kk-banner a.cite{color:#ffd83d}
+.kk-b1{--kc:var(--sec1);--kt:#f1f4e8} .kk-b2{--kc:var(--sec2);--kt:#e7f2f1} .kk-b3{--kc:var(--sec4);--kt:#f2ecf7} .kk-b4{--kc:var(--sec3);--kt:#faf3e2}
+.kk-blok{margin:22px 0 6px}
+.info-wrap h3.kk-kop{display:flex;align-items:center;gap:9px;border-left:none;padding-left:0;margin:0 0 10px;font-size:12.5px;color:var(--kc)}
+.kk-nr{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--kc);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center}
+.kk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.kk-grid.kk-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kk-tegel{background:var(--kt);border:1px solid var(--grijs);border-top:4px solid var(--kc);border-radius:var(--rs);padding:11px 13px;font-size:12.5px;line-height:1.55;color:var(--txt)}
+.kk-tegel .kk-ic{font-size:20px;line-height:1;display:block;margin-bottom:6px}
+.kk-tegel b{display:block;color:var(--kc);font-size:13px;margin-bottom:3px}
+.kk-knoppen{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.kk-knop{display:inline-block;font-size:11.5px;font-weight:700;color:var(--kc);background:#fff;border:1.5px solid var(--kc);border-radius:14px;padding:3px 10px;text-decoration:none}
+.kk-knop:hover{background:var(--kc);color:#fff}
+.kk-noot{background:#fff;border:1px dashed var(--kc);border-left:4px solid var(--kc);border-radius:var(--rs);padding:10px 14px;margin-top:10px}
+.info-wrap .kk-noot p{margin:0}
+.kk-kaart{background:var(--kt);border:1px solid var(--grijs);border-left:5px solid var(--kc);border-radius:var(--rs);padding:12px 16px}
+@media (max-width:640px){ .kk-grid,.kk-grid.kk-2{grid-template-columns:1fr} }
+
 /* breed TPZ-logo in de groene balk */
 .hdr-logo.hdr-logo-breed{width:auto;height:auto;border-radius:10px;padding:6px 10px}
 .hdr .hdr-logo-breed img{height:62px;width:auto;display:block}
@@ -838,41 +860,51 @@ a.cite:hover{background:var(--grijs2)}
   <div class="info-wrap" style="padding-bottom:50px">
     <h2>Deskundigheidsbevordering in het kwaliteitskader</h2>
     <p>Het <b>Kwaliteitskader palliatieve zorg Nederland, editie 2 (2026)</b> heeft een eigen thema Deskundigheid (6.1). Deze pagina vat kort samen wat dat van zorgprofessionals vraagt om hun deskundigheid op peil te houden, en hoe je hen daar als trainer of deskundigheidsbevorderaar bij helpt. Voor wat zij precies moeten kunnen, verwijzen we naar het kwaliteitskader zelf.</p>
-    <div class="stat-box"><p><b>Standaard.</b> Zowel de zorgprofessional als de vrijwilliger is gekwalificeerd voor de zorg die zij verlenen en houdt aantoonbaar de eigen kennis actueel met relevante bij- en nascholing.<span data-citeref="kk61"></span></p></div>
+    <div class="kk-banner"><span class="kk-lbl">Standaard 6.1 Deskundigheid</span><p>Zowel de zorgprofessional als de vrijwilliger is gekwalificeerd voor de zorg die zij verlenen en houdt aantoonbaar de eigen kennis actueel met relevante bij- en nascholing.<span data-citeref="kk61"></span></p></div>
 
-    <h3>Wat vraagt het kwaliteitskader van zorgprofessionals?</h3>
-    <ul class="vw-lijst" style="font-size:12.5px">
-      <li><b>Passende bij- en nascholing volgen</b>, zoals de eigen beroepsvereniging die heeft omschreven.</li>
-      <li><b>Kennis en vaardigheden bijhouden</b> en dat kunnen aantonen.</li>
-      <li><b>De eigen kwaliteiten en beperkingen kennen</b> en tijdig gespecialiseerde palliatieve zorg inschakelen.</li>
-      <li><b>Oog hebben voor zelfzorg</b> en voor de persoonlijke impact van het verlenen van palliatieve zorg.</li>
-    </ul>
-    <p>De organisatie hoort hen hierin te ondersteunen: aanbieders van palliatieve zorg bieden mogelijkheden om nieuwe kennis en inzichten op te doen.<span data-citeref="kk72"></span> Meer daarover staat onder <a href="#" onclick="goTo({tab:'borg'});return false" style="color:var(--dk);font-weight:700">Borgen</a>.</p>
+    <div class="kk-blok kk-b1">
+    <h3 class="kk-kop"><span class="kk-nr">1</span>Wat vraagt het kwaliteitskader van zorgprofessionals?</h3>
+    <div class="kk-grid">
+      <div class="kk-tegel"><span class="kk-ic">📚</span><b>Passende bij- en nascholing volgen</b>zoals de eigen beroepsvereniging die heeft omschreven.</div>
+      <div class="kk-tegel"><span class="kk-ic">📈</span><b>Kennis en vaardigheden bijhouden</b>en dat kunnen aantonen.</div>
+      <div class="kk-tegel"><span class="kk-ic">🔍</span><b>De eigen kwaliteiten en beperkingen kennen</b>en tijdig gespecialiseerde palliatieve zorg inschakelen.</div>
+      <div class="kk-tegel"><span class="kk-ic">💚</span><b>Oog hebben voor zelfzorg</b>en voor de persoonlijke impact van het verlenen van palliatieve zorg.</div>
+    </div>
+    <div class="kk-noot"><p>De organisatie hoort hen hierin te ondersteunen: aanbieders van palliatieve zorg bieden mogelijkheden om nieuwe kennis en inzichten op te doen.<span data-citeref="kk72"></span> Meer daarover staat onder <a href="#" onclick="goTo({tab:'borg'});return false" style="color:var(--dk);font-weight:700">Borgen</a>.</p></div>
+    </div>
 
-    <h3>Hoe help je hen hun deskundigheid op peil te houden?</h3>
-    <ul class="vw-lijst" style="font-size:12.5px">
-      <li><b>Breng in beeld waar zorgprofessionals staan:</b> zet de <a href="https://palliaweb.nl/onderwijs/competentiescan-palliatieve-zorg" target="_blank" rel="noopener">Competentiescan Palliatieve Zorg</a> of de <a href="https://nppz.org/kwaliteitskader-palliatieve-zorg/kennisquiz-palliatieve-zorg/" target="_blank" rel="noopener">Kennisquiz palliatieve zorg</a> in, individueel of in een team.</li>
-      <li><b>Kies scholing die bij hun functie en behoefte past:</b> zoek in het <a href="#" onclick="goTo({tab:'leer'});return false">leeraanbod</a> op niveau of rol.</li>
-      <li><b>Organiseer leren in en rond het werk:</b> gebruik de <a href="#" onclick="goTo({tab:'kennis',thema:'leren'});return false">vormen van leren</a> en de werkvormen bij de kernelementen.</li>
-      <li><b>Houd kennis actueel:</b> <a href="https://palliaweb.nl/e-pal" target="_blank" rel="noopener">e-pal</a> biedt toegankelijke informatie uit internationale tijdschriften, om zelf te volgen of te delen.</li>
-    </ul>
+    <div class="kk-blok kk-b2">
+    <h3 class="kk-kop"><span class="kk-nr">2</span>Hoe help je hen hun deskundigheid op peil te houden?</h3>
+    <div class="kk-grid kk-2">
+      <div class="kk-tegel"><span class="kk-ic">🧭</span><b>Breng in beeld waar zorgprofessionals staan</b>Zet de Competentiescan Palliatieve Zorg of de Kennisquiz palliatieve zorg in, individueel of in een team.<div class="kk-knoppen"><a class="kk-knop" href="https://palliaweb.nl/onderwijs/competentiescan-palliatieve-zorg" target="_blank" rel="noopener">Competentiescan ›</a><a class="kk-knop" href="https://nppz.org/kwaliteitskader-palliatieve-zorg/kennisquiz-palliatieve-zorg/" target="_blank" rel="noopener">Kennisquiz ›</a></div></div>
+      <div class="kk-tegel"><span class="kk-ic">🎓</span><b>Kies scholing die bij hun functie en behoefte past</b>Zoek in het leeraanbod op niveau of rol.<div class="kk-knoppen"><a class="kk-knop" href="#" onclick="goTo({tab:'leer'});return false">Leeraanbod ›</a></div></div>
+      <div class="kk-tegel"><span class="kk-ic">🤝</span><b>Organiseer leren in en rond het werk</b>Gebruik de vormen van leren en de werkvormen bij de kernelementen.<div class="kk-knoppen"><a class="kk-knop" href="#" onclick="goTo({tab:'kennis',thema:'leren'});return false">Vormen van leren ›</a></div></div>
+      <div class="kk-tegel"><span class="kk-ic">📰</span><b>Houd kennis actueel</b>e-pal biedt toegankelijke informatie uit internationale tijdschriften, om zelf te volgen of te delen.<div class="kk-knoppen"><a class="kk-knop" href="https://palliaweb.nl/e-pal" target="_blank" rel="noopener">e-pal ›</a></div></div>
+    </div>
+    </div>
 
-    <h3>En je eigen deskundigheid?</h3>
+    <div class="kk-blok kk-b3">
+    <h3 class="kk-kop"><span class="kk-nr">3</span>En je eigen deskundigheid?</h3>
     <p>Als trainer of deskundigheidsbevorderaar ben je vaak zelf een in palliatieve zorg gespecialiseerde zorgprofessional. Voor hen geldt aanvullend dat zij:<span data-citeref="kk61"></span></p>
-    <ul class="vw-lijst" style="font-size:12.5px">
-      <li>een <b>erkende opleiding palliatieve zorg</b> hebben, met ervaring en vaardigheden om aan de multidimensionele behoeften van patiënt en naasten te voldoen;</li>
-      <li>hun <b>deskundigheid structureel onderhouden en aantoonbaar vastleggen</b>, bijvoorbeeld in een register van de eigen discipline;<span data-citeref="ze"></span></li>
-      <li><b>scholing geven aan andere zorgprofessionals</b>, zoals bedside-onderwijs en discipline-overstijgend onderwijs;</li>
-      <li>getraind zijn in het herkennen van en omgaan met de <b>persoonlijke impact</b> van palliatieve zorg, ook bij collega's.</li>
-    </ul>
-    <p><b>Zo werk je eraan.</b> In het <a href="#" onclick="goTo({tab:'leer'});return false">leeraanbod</a> staan opleidingen en leergangen palliatieve zorg en scholingen voor docenten en opleiders (didactische vaardigheden). Volg de literatuur via <a href="https://palliaweb.nl/e-pal" target="_blank" rel="noopener">e-pal</a> en kijk onder <a href="#" onclick="goTo({tab:'kaders'});return false">Kaders en bronnen</a> voor congressen en symposia.</p>
+    <div class="kk-grid">
+      <div class="kk-tegel"><b>Erkende opleiding palliatieve zorg</b>met ervaring en vaardigheden om aan de multidimensionele behoeften van patiënt en naasten te voldoen.</div>
+      <div class="kk-tegel"><b>Deskundigheid structureel onderhouden en aantoonbaar vastleggen</b>bijvoorbeeld in een register van de eigen discipline.<span data-citeref="ze"></span></div>
+      <div class="kk-tegel"><b>Scholing geven aan andere zorgprofessionals</b>zoals bedside-onderwijs en discipline-overstijgend onderwijs.</div>
+      <div class="kk-tegel"><b>Persoonlijke impact</b>getraind in het herkennen van en omgaan met de persoonlijke impact van palliatieve zorg, ook bij collega's.</div>
+    </div>
+    <div class="kk-noot"><p><b>Zo werk je eraan.</b> In het <a href="#" onclick="goTo({tab:'leer'});return false">leeraanbod</a> staan opleidingen en leergangen palliatieve zorg en scholingen voor docenten en opleiders (didactische vaardigheden). Volg de literatuur via <a href="https://palliaweb.nl/e-pal" target="_blank" rel="noopener">e-pal</a> en kijk onder <a href="#" onclick="goTo({tab:'kaders'});return false">Kaders en bronnen</a> voor congressen en symposia.</p></div>
+    </div>
 
-    <h3>Wat moeten zorgprofessionals precies kunnen?</h3>
+    <div class="kk-blok kk-b4">
+    <h3 class="kk-kop"><span class="kk-nr">4</span>Wat moeten zorgprofessionals precies kunnen?</h3>
+    <div class="kk-kaart">
     <p>Dat staat in het kwaliteitskader, thema 6.1 Deskundigheid (p. 43-44)<span data-citeref="kk61"></span>: de criteria voor iedere zorgprofessional en de aanvullende criteria voor in palliatieve zorg gespecialiseerde zorgprofessionals. Het Onderwijsraamwerk palliatieve zorg 2.0 beschrijft de competenties per niveau (2 tot en met 8).</p>
-    <p style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+    <p style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0">
       <a class="btn" href="https://kwaliteitskader.palliaweb.nl/system/files/2026-10/kwaliteitskader-palliatieve-zorg-nederland_web-6-10_0.pdf" target="_blank" rel="noopener" style="text-decoration:none">Naar het kwaliteitskader</a>
       <a class="btn sec" href="https://palliaweb.nl/onderwijs/interprofessioneelopleiden/download-onderwijsraamwerk-2-0" target="_blank" rel="noopener" style="text-decoration:none">Onderwijsraamwerk 2.0</a>
     </p>
+    </div>
+    </div>
     <p style="font-size:11.5px;color:var(--txt2);margin-top:14px">Voor de werkwijze in Midden-Nederland zijn de regionale werkafspraken leidend. Organisaties kunnen met de <a href="https://palliaweb.nl/zorgpraktijk/evaluatie" target="_blank" rel="noopener" style="color:var(--dk)">Zelfevaluatie Palliatieve Zorg</a> de kwaliteit inzichtelijk maken.</p>
 
   </div>
