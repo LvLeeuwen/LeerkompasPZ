@@ -818,8 +818,8 @@ a.cite:hover{background:var(--grijs2)}
 
     <div class="inz-form" id="inz-form">
       <div class="pkg-title" style="font-size:15px">Materiaal, idee of ervaring delen</div>
-      <p class="inz-uitleg" style="margin:4px 0 12px">Vul het formulier in en voeg eventueel materiaal toe. Daarna stuur je je inbreng met één klik per mail naar het projectteam, of download je bestand om mee te sturen. Het projectteam bekijkt je inzending en neemt het eventueel op in het LeerKompas, met de naam van je organisatie erbij. Tot die tijd is je inzending alleen zichtbaar in deze browser.</p>
-      <div id="inz-formurl" style="display:none;margin-bottom:12px" class="suggest-note">Liever online? <a href="#" target="_blank" rel="noopener" style="color:var(--dk);font-weight:700;margin-left:4px">Open het online inzendformulier</a></div>
+      <p class="inz-uitleg" style="margin:4px 0 12px">Vul het formulier in en voeg eventueel materiaal toe. Daarna stuur je je bijdrage met één klik per mail naar het projectteam, of download je bestand om mee te sturen. Het projectteam bekijkt je bijdrage en neemt het eventueel op in het LeerKompas, met de naam van je organisatie erbij. Tot die tijd is je bijdrage alleen zichtbaar in deze browser.</p>
+      <div id="inz-formurl" style="display:none;margin-bottom:12px" class="suggest-note">Liever online? <a href="#" target="_blank" rel="noopener" style="color:var(--dk);font-weight:700;margin-left:4px">Open het online formulier</a></div>
       <div class="inz-grid">
         <label class="veld">Organisatie *<input type="text" id="inz-org" autocomplete="organization"></label>
         <label class="veld">Je naam<input type="text" id="inz-naam" autocomplete="name"></label>
@@ -831,13 +831,13 @@ a.cite:hover{background:var(--grijs2)}
       <div class="veld" style="margin-top:10px;font-size:11.5px;font-weight:700;color:var(--txt2)">Past bij kernelement of thema<div class="inz-thema" id="inz-thema"></div></div>
       <div class="inz-grid" style="margin-top:10px">
         <label class="veld">Link (als het materiaal online staat)<input type="url" id="inz-link" placeholder="https://"></label>
-        <label class="veld">Bestand (pdf, afbeelding, presentatie)<input type="file" id="inz-file"></label>
+        <label class="veld">Bestanden (pdf, afbeelding, presentatie; je kunt er meerdere tegelijk kiezen)<input type="file" id="inz-file" multiple></label>
       </div>
-      <label class="chk" style="margin-top:12px;align-items:flex-start"><input type="checkbox" id="inz-ok" style="margin-top:2px"> <span>Mijn organisatie vindt het goed dat dit materiaal met onze naam wordt gedeeld in het LeerKompas. Het bevat geen patiëntgegevens. *</span></label>
+      <label class="chk" style="margin-top:12px;align-items:flex-start"><input type="checkbox" id="inz-ok" style="margin-top:2px"> <span>Mijn organisatie vindt het goed dat dit materiaal met onze naam wordt gedeeld in het LeerKompas. *</span></label>
       <div class="inz-fout" id="inz-fout" role="alert"></div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px">
-        <button class="btn" onclick="voegInzendingToe()">Voeg toe aan mijn inzendingen</button>
-        <label class="btn tekst" style="cursor:pointer">Inzendbestand inladen (voor het projectteam)<input type="file" accept=".json,application/json" onchange="importInzending(event)" style="display:none"></label>
+        <button class="btn" onclick="voegInzendingToe()">Volgende: bekijk en verstuur je bijdrage</button>
+        <label class="btn tekst" style="cursor:pointer">Bijdrage-bestand inladen (voor het projectteam)<input type="file" accept=".json,application/json" onchange="importInzending(event)" style="display:none"></label>
       </div>
     </div>
   </div>
@@ -2084,8 +2084,9 @@ function orgKaart(m, compact){
   const themaChips = (m.thema||[]).filter(k=> THEMAS[k]).map(k=> `<span class="chip">${themaLabel(k)}</span>`).join('');
   let bijlage = '';
   if(m.img) bijlage = `<button class="org-thumb" onclick="openLightbox('${m.id}')" title="Vergroot"><img src="${m.img}" alt="${esc(m.titel)}"><span>Klik om te vergroten</span></button>`;
-  else if(m.bestand && m.bestand.data) bijlage = `<div class="werkvorm-support">📎 <a href="${m.bestand.data}" download="${esc(m.bestand.naam)}">${esc(m.bestand.naam)}</a></div>`;
-  else if(m.bestand) bijlage = `<div class="werkvorm-support">📎 ${esc(m.bestand.naam)} (te groot om mee te sturen; voeg toe als bijlage bij de mail)</div>`;
+  bijlage += bestandenVan(m).filter(b=> !m.img || b.data!==m.img).map(b=> b.data
+    ? `<div class="werkvorm-support">📎 <a href="${b.data}" download="${esc(b.naam)}">${esc(b.naam)}</a></div>`
+    : `<div class="werkvorm-support">📎 ${esc(b.naam)} (te groot om mee te sturen; voeg toe als bijlage bij de mail)</div>`).join('');
   el.innerHTML = `<div class="org-kop"><span class="org-label">${esc(m.org)}</span><span class="chip c-duur">${esc(m.soort||'')}</span>${m.concept? '<span class="chip c-concept">Concept · alleen in deze browser</span>':''} ${nieuwBadge(m)}</div>
     <div class="werkvorm-naam">${esc(m.titel)}</div>
     <div class="werkvorm-desc">${m.concept? esc(m.desc) : m.desc}</div>
@@ -2096,8 +2097,8 @@ function orgKaart(m, compact){
   if(m.concept && !compact){
     const acties = document.createElement('div'); acties.className = 'org-acties';
     const b1 = document.createElement('button'); b1.className='btn'; b1.textContent='Mail naar het projectteam'; b1.onclick=()=> mailInzending(m);
-    const b2 = document.createElement('button'); b2.className='btn sec'; b2.textContent='Download inzendbestand'; b2.onclick=()=> downloadInzending(m);
-    const b3 = document.createElement('button'); b3.className='btn tekst'; b3.textContent='Verwijder'; b3.onclick=()=>{ if(confirm('Deze concept-inzending verwijderen?')){ concepten = concepten.filter(c=> c.id!==m.id); store('inzendingen', concepten); renderRegio(); renderKn(); } };
+    const b2 = document.createElement('button'); b2.className='btn sec'; b2.textContent='Download je bijdrage als bestand'; b2.onclick=()=> downloadInzending(m);
+    const b3 = document.createElement('button'); b3.className='btn tekst'; b3.textContent='Verwijder'; b3.onclick=()=>{ if(confirm('Deze concept-bijdrage verwijderen?')){ concepten = concepten.filter(c=> c.id!==m.id); store('inzendingen', concepten); renderRegio(); renderKn(); } };
     acties.append(b1,b2,b3); el.appendChild(acties);
   }
   return el;
@@ -2110,23 +2111,25 @@ function openLightbox(id){
   lb.onclick = (e)=>{ if(e.target===lb || e.target.classList.contains('lb-x')) lb.classList.remove('vis'); };
 }
 function inzendTekst(m){
-  return ['Inzending voor het LeerKompas Palliatieve Zorg TPZ Midden-Nederland','',
-    'Organisatie: '+m.org, 'Ingezonden door: '+(m.inzender||'-'), 'E-mail: '+(m.email||'-'), '',
+  return ['Bijdrage voor het LeerKompas Palliatieve Zorg TPZ Midden-Nederland','',
+    'Organisatie: '+m.org, 'Gedeeld door: '+(m.inzender||'-'), 'E-mail: '+(m.email||'-'), '',
     'Titel: '+m.titel, 'Soort: '+m.soort, 'Kernelement/thema: '+((m.thema||[]).map(themaLabel).join('; ')||'-'), '',
-    'Beschrijving:', m.desc, '', 'Link: '+(m.link||'-'), 'Bestand: '+(m.bestand? m.bestand.naam+' (voeg toe als bijlage)':'-'), '',
+    'Beschrijving:', m.desc, '', 'Link: '+(m.link||'-'), 'Bestanden: '+(bestandenVan(m).length? bestandenVan(m).map(b=> b.naam).join('; ')+' (voeg toe als bijlage)':'-'), '',
     'Toestemming om met naam van de organisatie te delen: ja'].join('\n');
 }
 function mailInzending(m){
-  location.href = 'mailto:'+encodeURIComponent(INZEND.email||'')+'?subject='+encodeURIComponent('Inzending LeerKompas: '+m.titel+' ('+m.org+')')+'&body='+encodeURIComponent(inzendTekst(m));
+  location.href = 'mailto:'+encodeURIComponent(INZEND.email||'')+'?subject='+encodeURIComponent('Bijdrage LeerKompas: '+m.titel+' ('+m.org+')')+'&body='+encodeURIComponent(inzendTekst(m));
 }
 function downloadInzending(m){
   const blob = new Blob([JSON.stringify({ type:'tpz-dkb-inzending', versie:1, inzending:m }, null, 1)], {type:'application/json'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'inzending_'+norm(m.org).replace(/[^a-z0-9]+/g,'-')+'_'+norm(m.titel).replace(/[^a-z0-9]+/g,'-').slice(0,40)+'.json';
+  a.download = 'bijdrage_'+norm(m.org).replace(/[^a-z0-9]+/g,'-')+'_'+norm(m.titel).replace(/[^a-z0-9]+/g,'-').slice(0,40)+'.json';
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(()=> URL.revokeObjectURL(a.href), 2000);
 }
+/* oudere concepten hebben één 'bestand', nieuwe een lijst 'bestanden' */
+function bestandenVan(m){ return m.bestanden || (m.bestand? [m.bestand] : []); }
 function leesBestand(file){
   return new Promise(res=>{
     if(!file) return res(null);
@@ -2147,11 +2150,12 @@ async function voegInzendingToe(){
   if(!g('inz-ok').checked) mis.push('toestemming');
   if(mis.length){ fout.textContent = 'Vul nog in: ' + mis.join(', ') + '.'; return; }
   if(m.link && !/^https?:\/\//i.test(m.link)) m.link = 'https://' + m.link;
-  m.bestand = await leesBestand(g('inz-file').files[0]);
-  if(m.bestand && m.bestand.data && /^data:image\//.test(m.bestand.data)) m.img = m.bestand.data;
+  m.bestanden = await Promise.all([...g('inz-file').files].map(leesBestand));
+  const eersteAfb = m.bestanden.find(b=> b.data && /^data:image\//.test(b.data));
+  if(eersteAfb) m.img = eersteAfb.data;
   concepten.push(m);
   try{ localStorage.setItem('tpzdkb.inzendingen', JSON.stringify(concepten)); }
-  catch(e){ if(m.bestand){ delete m.bestand.data; delete m.img; } store('inzendingen', concepten); }
+  catch(e){ m.bestanden.forEach(b=> delete b.data); delete m.img; store('inzendingen', concepten); }
   ['inz-titel','inz-desc','inz-link','inz-file'].forEach(id=> g(id).value='');
   document.querySelectorAll('#inz-thema input').forEach(i=> i.checked=false); g('inz-ok').checked=false;
   renderRegio(); renderKn();
@@ -2166,7 +2170,7 @@ function importInzending(ev){
       if(j.type!=='tpz-dkb-inzending' || !j.inzending) throw 0;
       const m = j.inzending; m.id = 'c'+Date.now();
       concepten.push(m); store('inzendingen', concepten); renderRegio(); renderKn();
-    }catch(e){ alert('Dit bestand is geen inzendbestand van het LeerKompas.'); }
+    }catch(e){ alert('Dit bestand is geen bijdrage-bestand van het LeerKompas.'); }
     ev.target.value = '';
   };
   r.readAsText(f);
