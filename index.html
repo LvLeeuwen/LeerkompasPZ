@@ -796,7 +796,7 @@ a.cite:hover{background:var(--grijs2)}
 <!-- ================= UIT DE REGIO ================= -->
 <div class="tabpane" id="tab-regio">
   <div class="main-wrap">
-    <div class="pkg-title">Uit de regio: materialen en voorbeelden van deelnemende organisaties</div>
+    <div class="pkg-title">Uit de regio: materialen en voorbeelden van deelnemende organisaties <span class="vl-badge">In opbouw</span></div>
     <div class="pkg-sub">Wat de ene organisatie heeft ontwikkeld, hoeft de andere niet opnieuw te bedenken.</div>
     <div class="oproep">
       <h3>Gezocht: materialen en goede voorbeelden van deskundigheidsbevordering</h3>
@@ -804,7 +804,7 @@ a.cite:hover{background:var(--grijs2)}
       <ul>
         <li><b>Materialen voor scholing:</b> presentaties, lesprogramma's, casussen, werkvormen, e-learnings en toetsvragen die jullie in scholingen gebruiken.</li>
         <li><b>Leren tijdens het werk:</b> hoe werk je nieuwe collega's in op palliatieve zorg, wie is rolmodel, hoe ziet bedside teaching eruit?</li>
-        <li><b>Leren van en met collega's:</b> casuïstiek in het teamoverleg of MDO, coaching door een aandachtsvelder, meekijken met het palliatief team, moreel beraad.</li>
+        <li><b>Leren van en met collega's:</b> casuïstiek in het teamoverleg of MDO, coaching door een in PZ gespecialiseerde zorgprofessional, meekijken met het palliatief team, moreel beraad.</li>
         <li><b>Leren door terug te kijken:</b> nabespreken van een overlijden, evaluatie van een PZP-gesprek, reflectie in intervisie.</li>
         <li><b>Hulpmiddelen voor de werkvloer:</b> zakkaartjes, stroomschema's en werkinstructies.</li>
       </ul>
@@ -1749,7 +1749,7 @@ function themaHeeftNieuw(k){
   if(!NEW.since) return false;
   if(THEMAS[k] && THEMAS[k].added && THEMAS[k].added>=NEW.since) return true;
   const key = isNaN(k)? k : Number(k);
-  const lists = [ (PRAKTIJKTOOLS_CONTENT[key]||{}).items||[], (WERKVORMEN_CONTENT[key]||{}).items||[], PODCASTS.filter(p=>p.thema.includes(key)), ORG_MATERIALEN.filter(m=>m.thema.includes(key)) ];
+  const lists = [ (PRAKTIJKTOOLS_CONTENT[key]||{}).items||[], (WERKVORMEN_CONTENT[key]||{}).items||[], PODCASTS.filter(p=>p.thema.includes(key)), ORG_MATERIALEN.filter(m=>!m.verborgen && m.thema.includes(key)) ];
   return lists.some(l=> l.some(isNew));
 }
 function pill(label, on, fn, key){
@@ -2076,7 +2076,7 @@ function renderLeer(){ renderLeerFilters(); renderLeerResult(); }
 const SOORTEN = ['Praktijktool of instrument','Werkvorm','Scholingsmateriaal','Goed voorbeeld: leren tijdens het werk','Goed voorbeeld: leren van en met collega\'s','Goed voorbeeld: leren door reflectie','Idee of ervaring','Anders'];
 let regioState = { org:null, thema:null };
 let concepten = load('inzendingen', []);
-function alleOrgMaterialen(){ return ORG_MATERIALEN.concat(concepten.map(c=> Object.assign({ concept:true }, c))); }
+function alleOrgMaterialen(){ return ORG_MATERIALEN.filter(m=> !m.verborgen).concat(concepten.map(c=> Object.assign({ concept:true }, c))); }
 
 function orgKaart(m, compact){
   const el = document.createElement('div');
@@ -2186,7 +2186,7 @@ function renderRegio(){
   lijst.innerHTML = '';
   const res = alle.filter(m=> (m.concept || toonItem(m)) && (!regioState.org || m.org===regioState.org) && (regioState.thema===null || m.thema.includes(regioState.thema)));
   document.getElementById('regio-tel').textContent = res.length + (res.length===1? ' materiaal':' materialen');
-  if(!res.length){ lijst.innerHTML = '<div class="empty-state">Nog geen materialen bij deze keuze. Heeft jouw organisatie iets dat hier past? Deel het hieronder.</div>'; }
+  if(!res.length){ lijst.innerHTML = (alle.length ? '<div class="empty-state">Nog geen materialen bij deze keuze. Heeft jouw organisatie iets dat hier past? Deel het hieronder.</div>' : '<div class="empty-state">Deze pagina is in opbouw: de eerste materialen van deelnemende organisaties volgen binnenkort. Heeft jouw organisatie iets dat hier past? Deel het hieronder.</div>'); }
   res.forEach(m=> lijst.appendChild(orgKaart(m)));
   const fu = document.getElementById('inz-formurl');
   fu.style.display = INZEND.formUrl ? '' : 'none';
