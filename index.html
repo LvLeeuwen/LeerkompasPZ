@@ -1391,7 +1391,10 @@ PRAKTIJKTOOLS_CONTENT[0].items.push(
 );
 
 /* bovenaan bij 'Overige praktijktools en werkvormen', dus bij elk kernelement */
-PRAKTIJKTOOLS_CONTENT[0].items.unshift({ naam:'Basispresentatie Kwaliteitskader palliatieve zorg Nederland', added:'2026-10-30', desc:'PowerPoint om het geactualiseerde kwaliteitskader (2026) uit te leggen aan collega\'s, bijvoorbeeld in een teamoverleg of als opening van een scholing. Je kunt de dia\'s aanpassen aan je eigen organisatie.', meta:'Palliaweb · Toolbox Kwaliteitskader palliatieve zorg Nederland (pptx, juli 2026)', url:'https://palliaweb.nl/getattachment/069e67b8-611c-461b-98e8-3b01e3e24c1f/Basispresentatie-Kwaliteitskader-palliatieve-zorg-Nederland_20260710.pptx?lang=nl-NL' });
+PRAKTIJKTOOLS_CONTENT[0].items.unshift(
+  { naam:'Basispresentatie Kwaliteitskader palliatieve zorg Nederland', added:'2026-10-30', desc:'PowerPoint-presentatie uit de toolbox van het Kwaliteitskader palliatieve zorg Nederland. Over het kwaliteitskader, maar ook met definities van onder andere palliatieve zorg, het begin van de palliatieve fase en de vier dimensies van palliatieve zorg. Je kunt de dia\'s aanpassen aan je eigen organisatie; bij veel dia\'s staan sprekersnotities.', meta:'Stichting PZNL · Toolbox Kwaliteitskader palliatieve zorg Nederland (pptx, juli 2026)', url:'https://palliaweb.nl/getattachment/069e67b8-611c-461b-98e8-3b01e3e24c1f/Basispresentatie-Kwaliteitskader-palliatieve-zorg-Nederland_20260710.pptx?lang=nl-NL' },
+  { naam:'Animatie "Wat is palliatieve zorg?"', added:'2026-10-30', linkLabel:'bekijk video', desc:'Korte animatie die uitlegt wat palliatieve zorg is, gebaseerd op het kwaliteitskader. Vrij te gebruiken als les- of scholingsmateriaal, bijvoorbeeld als opening van een scholing of teamoverleg.', meta:'Palliaweb · Toolbox Kwaliteitskader palliatieve zorg Nederland (video, YouTube)', url:'https://www.youtube.com/watch?v=wzQBgxSuVcg' }
+);
 /* spellen: links aangevuld */
 (function(){
   const cat = TOOLS_INDEX.find(c=> (c.keywords||'').includes('spel'));
@@ -2326,6 +2329,7 @@ function bronA(b){ return (b.url && b.url.startsWith('http')) ? `<a href="${b.ur
   /* algemeen */
   const ALG = 'Algemene bronnen van het LeerKompas';
   regBron(ALG, KKA);
+  regBron(ALG, '<a href="https://palliaweb.nl/zorgpraktijk/kwaliteitskader-palliatieve-zorg-nederland/toolbox-kwaliteitskader-palliatieve-zorg-nederland" target="_blank" rel="noopener">Toolbox Kwaliteitskader palliatieve zorg Nederland (Palliaweb)</a>');
   regBron(ALG, 'Regionale werkafspraken palliatieve zorg Midden-Nederland (augustus 2026)');
   regBron(ALG, '<a href="https://palliaweb.nl/" target="_blank" rel="noopener">Palliaweb</a>');
   /* over de transformatie: lijst uit de pagina overnemen */
