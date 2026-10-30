@@ -1446,6 +1446,18 @@ const PODCASTS = [
 ];
 PODCASTS.forEach(p=> p.added = V);
 
+/* aanvullingen uit de Toolbox Kwaliteitskader palliatieve zorg Nederland (30-10-2026) */
+const GESPREKSWIJZER = { naam:'Gesprekswijzer "Weet jij of je het juiste zegt tegen je patiënten?"', added:'2026-10-30', desc:'Tabel met situaties in gesprekken waarin communicatie onbedoeld schadelijk kan zijn, met per situatie een voorbeeld van schadelijke en van behulpzamere communicatie. Ingedeeld in vijf categorieën: informeren, prognose, besluitvorming, empathie en exploreren. Gemaakt voor gesprekken met patiënten met ongeneeslijke kanker, maar ook bruikbaar bij andere aandoeningen. Met een poster om in scholingen te gebruiken.', meta:'Universiteit Leiden · Borstkankervereniging Nederland · Palliaweb (pdf)', url:'https://palliaweb.nl/overzichtspagina-hulpmiddelen/weet-jij-of-je-het-juiste-zegt-tegen-je-patienten', support:[{titel:'Tabel (pdf)', url:'https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/gezondheids--medische-en-neuropsychologie/universiteit-leiden-en-bvn-tabel-nl.pdf'},{titel:'Poster (pdf)', url:'https://www.universiteitleiden.nl/binaries/content/assets/sociale-wetenschappen/psychologie/gezondheids--medische-en-neuropsychologie/universiteit-leiden-en-bvn-poster.pdf'}] };
+PRAKTIJKTOOLS_CONTENT[2].items.push(
+  { naam:'Waaier voor het voeren van het open gesprek', added:'2026-10-30', desc:'Overzicht van methoden, hulpmiddelen en werkwijzen die het open gesprek over wat iemand belangrijk vindt ondersteunen. Hoort bij het Generiek Kompas "Samen werken aan kwaliteit van bestaan", voor ouderen met een zorgbehoefte thuis, in de wijk of in het verpleeghuis.', meta:'Generiek Kompas · Zorginzicht · Palliaweb (pdf)', url:'https://palliaweb.nl/getmedia/c567de80-bd59-4a28-8bba-d3f43ca75038/generiekkompas_waaier-open-gesprek.pdf' },
+  Object.assign({}, GESPREKSWIJZER, { desc: GESPREKSWIJZER.desc + ' Staat ook bij Communicatie.' })
+);
+PRAKTIJKTOOLS_CONTENT.com.items.push(
+  { naam:'Taalwijzer Palliatieve Zorg', added:'2026-10-30', desc:'Handreiking over taalgebruik en framing: welke woorden en verhalen over palliatieve zorg werken positief of juist negatief. Bedoeld voor iedereen die in of met palliatieve zorg werkt, omdat zij mede bepalen hoe palliatieve zorg wordt gezien.', meta:'NPPZ II · Bureau Taalstrategie · Palliaweb (pdf)', url:'https://palliaweb.nl/publicaties/taalhandboek-palliatieve-zorg-samenvatting', support:[{titel:'Samenvatting (pdf)', url:'https://palliaweb.nl/getmedia/df77d86f-0250-40b9-a1f6-a5f455677160/NPPZII-samenvatting-Taalhandboek-(maart-2024).pdf'},{titel:'Volledige Taalwijzer (pdf)', url:'https://palliaweb.nl/getmedia/049c8374-794c-4611-b7ec-fef6a047cf65/NPPZII-Taalhandboek-(februari-2024).pdf'}] },
+  GESPREKSWIJZER
+);
+PODCASTS.push({ naam:'Palliapodcast: Samen beslissen', thema:[2], added:'2026-10-30', desc:'Aflevering uit seizoen 2 van de Palliapodcast, waarin de auteurs van het boek "In gesprek over het leven en het einde" per thema uit het kwaliteitskader met elkaar in gesprek gaan. Met Hanneke van Laarhoven en Liesbeth Batenburg.', meta:'Palliapodcast · seizoen 2, aflevering 2', url:'https://app.springcast.fm/17076/s22-palliapodcast-samen-beslissen' });
+
 /* ---- materialen van deelnemende organisaties ---- */
 /* Versleuteld: alleen leesbaar met het wachtwoord voor transformatieaanjagers. De leesbare bron (regio-materialen.js) en het
    script versleutel-regio.ps1 staan buiten de repo, in de map "LeerkompasPZ-regio (niet publiceren)". Zie ontsleutelRegio(). */
